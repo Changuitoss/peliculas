@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <title>Peliculas recomendadasss </title>
 </head>
-<body>
+<body id="body">
   <div class="container">
     <h1 id="titulo">Que ver?!?</h1>
     <div class="row">
@@ -16,32 +16,32 @@
         <form>
           <div class="form-group">
             <label for="tipo">Tipo: </label>
-              <select id="tipo" class="form-control-sm">
+              <select id="tipo" class="form-control-sm seleccion">
                 <option value="movie">Peliculas</option>
                 <option value="series">Series</option>
               </select>
           </div>
           <div class="form-group">
             <label for="genero">Genero: 
-              <select id="genero" class="form-control-sm"></select>
+              <select id="genero" class="form-control-sm seleccion"></select>
             </label>
           </div>
           <div class="form-group">
             <label for="anodesde">Desde que anio? 
-              <select id="anodesde" class="form-control-sm"></select>
+              <select id="anodesde" class="form-control-sm seleccion"></select>
             </label>
           </div>
           <div class="form-group">
             <label for="anohasta">Hasta que anio? 
-              <select id="anohasta" class="form-control-sm"></select>
+              <select id="anohasta" class="form-control-sm seleccion"></select>
             </label>
           </div>
           <div class="form-group">
             <label for="puntajedesde">Puntaje desde  
-              <input type="number" min="1" max="10" step="0.5" id="puntajedesde" class="form-control-sm">
+              <input type="number" min="1" max="10" step="0.5" id="puntajedesde" class="form-control-sm seleccion">
             </label>
           </div>
-          <button type="submit">A ver...</button>
+          <button type="submit" class="btn btn-dark">A ver...</button>
         </form>
       </div>
       <div class="col-9" id="peliculas">

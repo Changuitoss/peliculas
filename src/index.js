@@ -68,11 +68,11 @@ function mostrarPeliculas(peliculas) {
     const tapa = pelicula.poster_path;
     const release = pelicula.release_date;
     const puntaje = pelicula.vote_average;
-    const peliculasContainer = document.querySelector('#peliculas');
 
     //Crea la parte de la imagen de la CARD
     const cardImgContainer = document.createElement('div');
     cardImgContainer.classList.add('card', 'mb-3');
+    cardImgContainer.setAttribute('id', 'card');
     const cardRow = document.createElement('div');
     cardRow.classList.add('row', 'no-gutters');
     cardImgContainer.appendChild(cardRow);
@@ -93,10 +93,16 @@ function mostrarPeliculas(peliculas) {
     cardInfoColumna.appendChild(cardBody);
     const cardTitulo = document.createElement('h5');
     cardTitulo.classList.add('card-title');
+    cardTitulo.setAttribute('id', 'card-titulo');
     cardTitulo.textContent = titulo;
     cardBody.appendChild(cardTitulo);
+    const cardPuntaje = document.createElement('p');
+    cardPuntaje.classList.add('badge', 'badge-warning', 'puntaje');
+    cardPuntaje.textContent = puntaje;
+    cardTitulo.appendChild(cardPuntaje);
     const descripcion = document.createElement('p');
     descripcion.classList.add('card-text');
+    descripcion.setAttribute('id', 'card-descripcion');
     descripcion.textContent = resumen;
     cardBody.appendChild(descripcion); 
     const fechaSalida = document.createElement('p');
