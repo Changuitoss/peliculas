@@ -52,7 +52,7 @@ function obtenerPeliculas(e) {
     .then((resultadoPeliculas) => mostrarPeliculas(resultadoPeliculas.results));
 }
 
-function obtenerPeliculasIngles(e) {
+function obtenerInfoIngles(e) {
   e.preventDefault()
   const tipo = e.target.tipo.value;
   const genero = e.target.genero.value;
@@ -64,20 +64,32 @@ function obtenerPeliculasIngles(e) {
 
   return fetch(url)
     .then((r) => r.json())
-    .then((resultadoPeliculas) => mostrarImagenesIngles(resultadoPeliculas.results));
+    .then((resultadoPeliculas) => mostrarInfoIngles(resultadoPeliculas.results));
 }
 
-function mostrarImagenesIngles(peliculas) {
-  const imagenBox = document.querySelectorAll('.imagen-box')
+function mostrarInfoIngles(peliculas) {
+  const imagenBox = document.querySelectorAll('.imagen-box');
+  const titulos = document.querySelectorAll('#card-titulo');
 
   for (var i = 0; i < peliculas.length; i += 1) {
     const tapa = peliculas[i].poster_path;
+    const idioma = peliculas[i].original_language;
+    const titulo = peliculas[i].title;
 
     //Crea la parte de la imagen de la CARD, con el poster en ingles (viene de otro fetch)
     const imagen = document.createElement('img');
     imagen.classList.add('card-img');
     imagen.setAttribute('src', `https://image.tmdb.org/t/p/w500${tapa}`)
     imagenBox[i].appendChild(imagen);
+
+    //Agrega subtitulo si el titulo principal esta en algun idioma que no sea ingles o espaniol
+    if (idioma != 'en' && idioma != 'es' && titulos[i].firstChild.textContent.toLowerCase() != titulo.toLowerCase()) {
+        const tituloAlternativo = document.createElement('h4');
+        tituloAlternativo.classList.add('card-title');
+        tituloAlternativo.setAttribute('id', 'card-titulo-alternativo');
+        tituloAlternativo.textContent = titulo;
+        titulos[i].appendChild(tituloAlternativo);
+    }
   }
 }
 
@@ -143,7 +155,7 @@ function configurarPagina() {
   obtenerGeneros();
   
   form.addEventListener('submit', obtenerPeliculas)
-  form.addEventListener('submit', obtenerPeliculasIngles)
+  form.addEventListener('submit', obtenerInfoIngles)
 }
 
 configurarPagina()
