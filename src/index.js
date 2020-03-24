@@ -47,8 +47,9 @@ function obtenerPeliculas(e) {
   const genero = e.target.genero.value;
   const desdeAno = e.target.anodesde.value;
   const hastaAno = e.target.anohasta.value;
+  const $votos = 500;
 
-  const url =  `https://api.themoviedb.org/3/discover/${tipo}?api_key=e4c325cfe50ba68791f7165086f631e4&language=es&sort_by=vote_average.desc&include_adult=false&include_video=false&page=1&with_genres=${genero}&primary_release_date.gte=${desdeAno}-01-01&primary_release_date.lte=${hastaAno}-12-12&vote_count.gte=1000`
+  const url =  `https://api.themoviedb.org/3/discover/${tipo}?api_key=e4c325cfe50ba68791f7165086f631e4&language=es&sort_by=vote_average.desc&include_adult=false&include_video=false&page=1&with_genres=${genero}&primary_release_date.gte=${desdeAno}-01-01&primary_release_date.lte=${hastaAno}-12-12&vote_count.gte=${$votos}&include_image_language=en`
 
   return fetch(url)
     .then((r) => r.json())
@@ -62,11 +63,12 @@ function mostrarPeliculas(peliculas) {
 
 
   peliculas.forEach((pelicula) => {
-    const titulo = pelicula.original_title;
-    const resumen = pelicula.overview;
     const tapa = pelicula.poster_path;
-    const release = pelicula.release_date;
+    const titulo = pelicula.original_title;
     const puntaje = pelicula.vote_average;
+    const resumen = pelicula.overview;
+    const releaseEnglish = pelicula.release_date.split('-');
+    const release = releaseEnglish[2] + '-' + releaseEnglish[1] + '-' + releaseEnglish[0];
 
     //Crea la parte de la imagen de la CARD
     const cardImgContainer = document.createElement('div');
@@ -80,7 +82,7 @@ function mostrarPeliculas(peliculas) {
     cardRow.appendChild(cardImgColumna);
     const imagen = document.createElement('img');
     imagen.classList.add('card-img');
-    imagen.setAttribute('src', `https://image.tmdb.org/t/p/original${tapa}`)
+    imagen.setAttribute('src', `https://image.tmdb.org/t/p/w500${tapa}`)
     cardImgColumna.appendChild(imagen);
 
     //Crea la parte de la info de la CARD

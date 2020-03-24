@@ -1,4 +1,6 @@
+Convertir la fecha de estreno a espaniol
 filtrar Hindis
+agregar actores
 Traer series
 poner los posters originales
 poner tambien el titulo alternativo (para las que estan en otros idiomas)
