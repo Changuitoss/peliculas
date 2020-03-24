@@ -1,4 +1,3 @@
-//const url = 'https://api.themoviedb.org/3/movie/top_rated?api_key=e4c325cfe50ba68791f7165086f631e4&language=en-US&page=1'
 
 function obtenerGeneros() {
   const $url = 'https://api.themoviedb.org/3/genre/movie/list?api_key=e4c325cfe50ba68791f7165086f631e4&language=es'
@@ -31,9 +30,6 @@ function mostrarAnos(selector) {
   } 
 }
 
-
-
-
 function limpiarHindis(peliculasTodas) {
   const peliculasLimpio = peliculasTodas.filter((peliculas) => {
     return peliculas.original_language != 'hi';
@@ -56,11 +52,38 @@ function obtenerPeliculas(e) {
     .then((resultadoPeliculas) => mostrarPeliculas(resultadoPeliculas.results));
 }
 
+function obtenerPeliculasIngles(e) {
+  e.preventDefault()
+  const tipo = e.target.tipo.value;
+  const genero = e.target.genero.value;
+  const desdeAno = e.target.anodesde.value;
+  const hastaAno = e.target.anohasta.value;
+  const $votos = 500;
+
+  const url =  `https://api.themoviedb.org/3/discover/${tipo}?api_key=e4c325cfe50ba68791f7165086f631e4&language=en&sort_by=vote_average.desc&include_adult=false&include_video=false&page=1&with_genres=${genero}&primary_release_date.gte=${desdeAno}-01-01&primary_release_date.lte=${hastaAno}-12-12&vote_count.gte=${$votos}&include_image_language=en`
+
+  return fetch(url)
+    .then((r) => r.json())
+    .then((resultadoPeliculas) => mostrarImagenesIngles(resultadoPeliculas.results));
+}
+
+function mostrarImagenesIngles(peliculas) {
+  const imagenBox = document.querySelectorAll('.imagen-box')
+
+  for (var i = 0; i < peliculas.length; i += 1) {
+    const tapa = peliculas[i].poster_path;
+
+    //Crea la parte de la imagen de la CARD, con el poster en ingles (viene de otro fetch)
+    const imagen = document.createElement('img');
+    imagen.classList.add('card-img');
+    imagen.setAttribute('src', `https://image.tmdb.org/t/p/w500${tapa}`)
+    imagenBox[i].appendChild(imagen);
+  }
+}
+
 function mostrarPeliculas(peliculas) {
-  console.log(peliculas);
   const peliculasDOM = document.querySelector('#peliculas');
   peliculasDOM.innerHTML = '';
-
 
   peliculas.forEach((pelicula) => {
     const tapa = pelicula.poster_path;
@@ -70,7 +93,7 @@ function mostrarPeliculas(peliculas) {
     const releaseEnglish = pelicula.release_date.split('-');
     const release = releaseEnglish[2] + '-' + releaseEnglish[1] + '-' + releaseEnglish[0];
 
-    //Crea la parte de la imagen de la CARD
+    //Crea la parte del contenedor de la imagen de la CARD
     const cardImgContainer = document.createElement('div');
     cardImgContainer.classList.add('card', 'mb-3');
     cardImgContainer.setAttribute('id', 'card');
@@ -78,12 +101,8 @@ function mostrarPeliculas(peliculas) {
     cardRow.classList.add('row', 'no-gutters');
     cardImgContainer.appendChild(cardRow);
     const cardImgColumna = document.createElement('div');
-    cardImgColumna.classList.add('col-md-4');
+    cardImgColumna.classList.add('col-md-4', 'imagen-box');
     cardRow.appendChild(cardImgColumna);
-    const imagen = document.createElement('img');
-    imagen.classList.add('card-img');
-    imagen.setAttribute('src', `https://image.tmdb.org/t/p/w500${tapa}`)
-    cardImgColumna.appendChild(imagen);
 
     //Crea la parte de la info de la CARD
     const cardInfoColumna = document.createElement('div');
@@ -113,8 +132,6 @@ function mostrarPeliculas(peliculas) {
 
     peliculasDOM.appendChild(cardImgContainer)
   })
-
-
 }
 
 function configurarPagina() {
@@ -126,6 +143,7 @@ function configurarPagina() {
   obtenerGeneros();
   
   form.addEventListener('submit', obtenerPeliculas)
+  form.addEventListener('submit', obtenerPeliculasIngles)
 }
 
 configurarPagina()
