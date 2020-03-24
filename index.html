@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <title>Movies API</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Que puede ver la chiquita?!?</h1>
+    <div class="row">
+      <div class="col-4">
+        <form>
+          <div>
+            <label for="tipo">Tipo: 
+              <select id="tipo">
+                <option value="movies">Peliculas</option>
+                <option value="series">Series</option>
+              </select>
+            </label>
+          </div>
+          <div>
+            <label for="genero">Genero: 
+              <select id="genero">
+              </select>
+            </label>
+          </div>
+          <div>
+            <label for="anodesde">Desde que anio? 
+              <select id="anodesde"></select>
+            </label>
+          </div>
+          <div>
+            <label for="anohasta">Hasta que anio? 
+              <select id="anohasta"></select>
+            </label>
+          </div>
+          <div>
+            <label for="puntajedesde">Puntaje dese  
+              <input type="number" min="1" max="10" id="puntajedesde">
+            </label>
+          </div>
+          <button type="submit">A ver...</button>
+        </form>
+      </div>
+      <div class="col-8">
+        <ul></ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
