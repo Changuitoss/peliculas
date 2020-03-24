@@ -49,7 +49,7 @@ function obtenerPeliculas(e) {
   const hastaAno = e.target.anohasta.value;
   const puntaje = e.target.puntajedesde.value;
 
-  const url =  `https://api.themoviedb.org/3/discover/${tipo}?api_key=e4c325cfe50ba68791f7165086f631e4&sort_by=vote_average.desc&include_adult=false&include_video=false&page=1&with_genres=${genero}&primary_release_date.gte=${desdeAno}-01-01&primary_release_date.lte=${hastaAno}-12-12&vote_count.gte=1000&vote_average.gte=${puntaje}`
+  const url =  `https://api.themoviedb.org/3/discover/${tipo}?api_key=e4c325cfe50ba68791f7165086f631e4&language=es&sort_by=vote_average.desc&include_adult=false&include_video=false&page=1&with_genres=${genero}&primary_release_date.gte=${desdeAno}-01-01&primary_release_date.lte=${hastaAno}-12-12&vote_count.gte=1000&vote_average.gte=${puntaje}`
 
   return fetch(url)
     .then((r) => r.json())
@@ -93,11 +93,16 @@ function mostrarPeliculas(peliculas) {
     cardInfoColumna.appendChild(cardBody);
     const cardTitulo = document.createElement('h5');
     cardTitulo.classList.add('card-title');
+    cardTitulo.textContent = titulo;
     cardBody.appendChild(cardTitulo);
     const descripcion = document.createElement('p');
     descripcion.classList.add('card-text');
     descripcion.textContent = resumen;
-    cardBody.appendChild(descripcion);  
+    cardBody.appendChild(descripcion); 
+    const fechaSalida = document.createElement('p');
+    fechaSalida.classList.add('card-text')
+    fechaSalida.textContent = `Estreno: ${release}`; 
+    cardBody.appendChild(fechaSalida);
 
     peliculasDOM.appendChild(cardImgContainer)
   })

@@ -1,3 +1,10 @@
-h1 {
+body {
+  background: linear-gradient(90deg, rgba(246,249,126,0.7400093826593137) 0%, rgba(201,219,17,0.4795051809786415) 10%, rgba(254,255,0,0) 100%);
+}
+
+
+  #titulo {
+  font-family: 'Permanent Marker', cursive;
   text-align: center;
+  margin: 1em;
 }

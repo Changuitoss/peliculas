@@ -4,47 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./src/index.css">
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet"> 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <title>Movies API</title>
 </head>
 <body>
   <div class="container">
-    <h1>Que puede ver la chiquita?!?</h1>
+    <h1 id="titulo">Que puede ver la chiquita?!?</h1>
     <div class="row">
-      <div class="col-4">
+      <div class="col-3">
         <form>
-          <div>
+          <div class="form-group">
             <label for="tipo">Tipo: </label>
-              <select id="tipo">
+              <select id="tipo" class="form-control-sm">
                 <option value="movie">Peliculas</option>
                 <option value="series">Series</option>
               </select>
           </div>
-          <div>
+          <div class="form-group">
             <label for="genero">Genero: 
-              <select id="genero">
-              </select>
+              <select id="genero" class="form-control-sm"></select>
             </label>
           </div>
-          <div>
+          <div class="form-group">
             <label for="anodesde">Desde que anio? 
-              <select id="anodesde"></select>
+              <select id="anodesde" class="form-control-sm"></select>
             </label>
           </div>
-          <div>
+          <div class="form-group">
             <label for="anohasta">Hasta que anio? 
-              <select id="anohasta"></select>
+              <select id="anohasta" class="form-control-sm"></select>
             </label>
           </div>
-          <div>
-            <label for="puntajedesde">Puntaje dese  
-              <input type="number" min="1" max="10" id="puntajedesde">
+          <div class="form-group">
+            <label for="puntajedesde">Puntaje desde  
+              <input type="number" min="1" max="10" step="0.5" id="puntajedesde" class="form-control-sm">
             </label>
           </div>
           <button type="submit">A ver...</button>
         </form>
       </div>
-      <div class="col-8" id="peliculas">
+      <div class="col-9" id="peliculas">
         
       </div>
     </div>
