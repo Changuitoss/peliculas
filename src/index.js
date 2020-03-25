@@ -154,8 +154,9 @@ function configurarPagina() {
   mostrarAnos(anoHasta);
   obtenerGeneros();
   
-  form.addEventListener('submit', obtenerPeliculas)
-  form.addEventListener('submit', obtenerInfoIngles)
+  form.addEventListener('submit', (e) => {
+    obtenerPeliculas(e).then(obtenerInfoIngles(e))
+  })
 }
 
 configurarPagina()

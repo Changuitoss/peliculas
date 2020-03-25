@@ -21,6 +21,10 @@ label {
   color: rgb(238, 255, 0);
 }
 
+option {
+  color: black;
+}
+
 #card {
   background-color: transparent;
   border: none;
