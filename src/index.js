@@ -54,7 +54,6 @@ function obtenerPeliculas(e) {
   return fetch(url)
     .then((r) => r.json())
     .then((resultadoPeliculas) => {
-      //console.log(resultadoPeliculas);
       const { page: pagina, total_pages: paginasTotales, results: resultados} = resultadoPeliculas;
       mostrarPeliculas(resultados);
       mostrarNavegacionPaginas(url, pagina, paginasTotales);
@@ -62,26 +61,38 @@ function obtenerPeliculas(e) {
 }
 
 function mostrarNavegacionPaginas(url, pagina, paginasTotales) {
-  const siguiente = document.querySelector('#peliculas-nav');
-  console.log('url: ', url)
-  console.log(typeof pagina)
-  
+  const peliculasNav = document.querySelector('#peliculas-nav');
+  const peliculasNavNumero = document.querySelector('.peliculas-nav-numero');
+  peliculasNavNumero.textContent = pagina;
 
-  siguiente.addEventListener('click', () => {
-    const urlSiguiente = url.replace('page=1', '') + '&page=' + (pagina + 1);
-    const urlSiguienteIngles = urlSiguiente.replace('language=es', '') + '&language=en';
-    obtenerInfoProximaPagina(urlSiguiente).then(obtenerInfoProximaPaginaIngles(urlSiguienteIngles));
+  peliculasNav.addEventListener('click', (e) => {
+    const boton = e.target.dataset.boton;
+    
+
+    if (boton == 'proxima' && pagina < paginasTotales) {
+      pagina += 1;
+      peliculasNavNumero.textContent = pagina;
+      urlNueva = url.replace('&page=1', '') + '&page=' + (pagina);
+      urlNuevaIngles = urlNueva.replace('language=es', '') + '&language=en';
+    } 
+    else if (boton == 'anterior') {
+      pagina -= 1;
+      peliculasNavNumero.textContent = pagina;
+      urlNueva = url.replace('&page=2', '') + '&page=' + (pagina);
+      urlNuevaIngles = urlNueva.replace('&language=es', '') + '&language=en';
+    }
+
+    obtenerInfoPagina(e, urlNueva).then(obtenerInfoPaginaIngles(urlNuevaIngles));
   });
 }
 
-function obtenerInfoProximaPaginaIngles(url) {
-  console.log('urlSiguienteIngles: ', url);
+function obtenerInfoPaginaIngles(url) {
   return fetch(url)
     .then((r) => r.json())
     .then((resultadoPeliculas) => mostrarInfoIngles(resultadoPeliculas.results));
 }
 
-function obtenerInfoProximaPagina(url) {
+function obtenerInfoPagina(e, url) {
   return fetch(url)
   .then((r) => r.json())
   .then((resultadoPeliculas) => {
@@ -107,6 +118,7 @@ function obtenerInfoIngles(e) {
 
 function mostrarInfoIngles(peliculas) {
   const imagenBox = document.querySelectorAll('.imagen-box');
+  imagenBox.innerHTML = '';
   const titulos = document.querySelectorAll('#card-titulo');
 
   for (var i = 0; i < peliculas.length; i += 1) {
@@ -204,6 +216,8 @@ function configurarPagina() {
   obtenerGeneros();
   
   form.addEventListener('submit', (e) => {
+    const peliculasNav = document.querySelector('#peliculas-nav');
+    peliculasNav.classList.remove('invisible');
     obtenerPeliculas(e).then(obtenerInfoIngles(e))
   })
 }

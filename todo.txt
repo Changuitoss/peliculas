@@ -1,6 +1,6 @@
 BUG: por que hay que buscar 2 veces para que aparezcan las imagenes?
 ESTA EN nETFLIX? otros servicios?
-mostrar paginas.
+paginador: falta el previous, y hacerlo condicional.
 filtrar Hindis
 agregar actores
 Traer series

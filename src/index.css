@@ -47,6 +47,17 @@ button.submit {
   border-radius: .8rem;
 }
 
+#peliculas-nav {
+  font-size: 2rem;
+  font-weight: 700;
+  color: yellow;
+  margin-bottom: 2rem;
+}
+
+.invisible {
+  display: none;
+}
+
 #card {
   background-color: transparent;
   border: none;
