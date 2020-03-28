@@ -1,4 +1,5 @@
 BUG: por que hay que buscar 2 veces para que aparezcan las imagenes?
+ESTA EN nETFLIX? otros servicios?
 mostrar paginas.
 filtrar Hindis
 agregar actores

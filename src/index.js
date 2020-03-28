@@ -21,12 +21,16 @@ function mostrarGeneros(generosArray) {
 function mostrarAnos(selector) {
   const fecha = new Date();
   const esteAno = fecha.getFullYear();
+  const esHasta = selector.classList.contains('hasta');
 
   for (var i = 1960; i <= esteAno; i += 1) {
     const opcion = document.createElement('option');
     opcion.setAttribute('value', i)
     opcion.textContent = i;
     selector.appendChild(opcion);
+    if (esHasta && i == esteAno) {
+      opcion.setAttribute('selected', 'selected');
+    }
   } 
 }
 
@@ -75,6 +79,8 @@ function mostrarInfoIngles(peliculas) {
     const tapa = peliculas[i].poster_path;
     const idioma = peliculas[i].original_language;
     const titulo = peliculas[i].title;
+    const releaseEnglish = peliculas[i].release_date.split('-');
+    const release = releaseEnglish[2] + '-' + releaseEnglish[1] + '-' + releaseEnglish[0];
 
     //Crea la parte de la imagen de la CARD, con el poster en ingles (viene de otro fetch)
     const imagen = document.createElement('img');
@@ -89,6 +95,11 @@ function mostrarInfoIngles(peliculas) {
         tituloAlternativo.setAttribute('id', 'card-titulo-alternativo');
         tituloAlternativo.textContent = titulo;
         titulos[i].appendChild(tituloAlternativo);
+        const fechaSalida = document.createElement('p');
+        fechaSalida.classList.add('card-text', 'release');
+        fechaSalida.setAttribute('id', 'release');
+        fechaSalida.textContent = `Estreno: ${release}`; 
+        tituloAlternativo.appendChild(fechaSalida);
     }
   }
 }
@@ -100,6 +111,7 @@ function mostrarPeliculas(peliculas) {
   peliculas.forEach((pelicula) => {
     const tapa = pelicula.poster_path;
     const titulo = pelicula.original_title;
+    const idioma = pelicula.original_language;
     const puntaje = pelicula.vote_average;
     const resumen = pelicula.overview;
     const releaseEnglish = pelicula.release_date.split('-');
@@ -132,15 +144,18 @@ function mostrarPeliculas(peliculas) {
     cardPuntaje.classList.add('badge', 'badge-warning', 'puntaje');
     cardPuntaje.textContent = puntaje;
     cardTitulo.appendChild(cardPuntaje);
+    if (idioma == 'en' || idioma == 'es') {
+      const fechaSalida = document.createElement('p');
+      fechaSalida.classList.add('card-text', 'release');
+      fechaSalida.setAttribute('id', 'release');
+      fechaSalida.textContent = `Estreno: ${release}`; 
+      cardTitulo.appendChild(fechaSalida);
+    }
     const descripcion = document.createElement('p');
     descripcion.classList.add('card-text');
     descripcion.setAttribute('id', 'card-descripcion');
     descripcion.textContent = resumen;
     cardBody.appendChild(descripcion); 
-    const fechaSalida = document.createElement('p');
-    fechaSalida.classList.add('card-text')
-    fechaSalida.textContent = `Estreno: ${release}`; 
-    cardBody.appendChild(fechaSalida);
 
     peliculasDOM.appendChild(cardImgContainer)
   })
