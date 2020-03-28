@@ -47,13 +47,47 @@ function obtenerPeliculas(e) {
   const genero = e.target.genero.value;
   const desdeAno = e.target.anodesde.value;
   const hastaAno = e.target.anohasta.value;
-  const $votos = 500;
+  const $votos = 200;
 
   const url =  `https://api.themoviedb.org/3/discover/${tipo}?api_key=e4c325cfe50ba68791f7165086f631e4&language=es&sort_by=vote_average.desc&include_adult=false&include_video=false&page=1&with_genres=${genero}&primary_release_date.gte=${desdeAno}-01-01&primary_release_date.lte=${hastaAno}-12-12&vote_count.gte=${$votos}&include_image_language=en`
 
   return fetch(url)
     .then((r) => r.json())
-    .then((resultadoPeliculas) => mostrarPeliculas(resultadoPeliculas.results));
+    .then((resultadoPeliculas) => {
+      //console.log(resultadoPeliculas);
+      const { page: pagina, total_pages: paginasTotales, results: resultados} = resultadoPeliculas;
+      mostrarPeliculas(resultados);
+      mostrarNavegacionPaginas(url, pagina, paginasTotales);
+    });
+}
+
+function mostrarNavegacionPaginas(url, pagina, paginasTotales) {
+  const siguiente = document.querySelector('#peliculas-nav');
+  console.log('url: ', url)
+  console.log(typeof pagina)
+  
+
+  siguiente.addEventListener('click', () => {
+    const urlSiguiente = url.replace('page=1', '') + '&page=' + (pagina + 1);
+    const urlSiguienteIngles = urlSiguiente.replace('language=es', '') + '&language=en';
+    obtenerInfoProximaPagina(urlSiguiente).then(obtenerInfoProximaPaginaIngles(urlSiguienteIngles));
+  });
+}
+
+function obtenerInfoProximaPaginaIngles(url) {
+  console.log('urlSiguienteIngles: ', url);
+  return fetch(url)
+    .then((r) => r.json())
+    .then((resultadoPeliculas) => mostrarInfoIngles(resultadoPeliculas.results));
+}
+
+function obtenerInfoProximaPagina(url) {
+  return fetch(url)
+  .then((r) => r.json())
+  .then((resultadoPeliculas) => {
+    const { page: pagina, total_pages: paginasTotales, results: resultados} = resultadoPeliculas;
+    mostrarPeliculas(resultados);
+  })
 }
 
 function obtenerInfoIngles(e) {
