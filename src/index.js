@@ -54,6 +54,8 @@ function obtenerPeliculas(e) {
   return fetch(url)
     .then((r) => r.json())
     .then((resultadoPeliculas) => {
+      console.log(resultadoPeliculas)
+      console.log('totalresultado espanol: ', resultadoPeliculas.total_results)
       const { page: pagina, total_pages: paginasTotales, results: resultados} = resultadoPeliculas;
       mostrarPeliculas(resultados);
       mostrarNavegacionPaginas(url, pagina, paginasTotales);
@@ -113,7 +115,9 @@ function obtenerInfoIngles(e) {
 
   return fetch(url)
     .then((r) => r.json())
-    .then((resultadoPeliculas) => mostrarInfoIngles(resultadoPeliculas.results));
+    .then((resultadoPeliculas) => {
+      console.log('totalresultado ingles: ', resultadoPeliculas.total_results)
+      return mostrarInfoIngles(resultadoPeliculas.results)});
 }
 
 function mostrarInfoIngles(peliculas) {
@@ -155,7 +159,6 @@ function mostrarPeliculas(peliculas) {
   peliculasDOM.innerHTML = '';
 
   peliculas.forEach((pelicula) => {
-    const tapa = pelicula.poster_path;
     const titulo = pelicula.original_title;
     const idioma = pelicula.original_language;
     const puntaje = pelicula.vote_average;

@@ -1,6 +1,8 @@
-BUG: por que hay que buscar 2 veces para que aparezcan las imagenes?
+BUGS: 
+- Hay distinta cantidad de resultados en ESP e EN, matchear con ID para los posters?
+- por que hay que buscar 2 veces para que aparezcan las imagenes?
 ESTA EN nETFLIX? otros servicios?
-paginador: falta el previous, y hacerlo condicional.
+paginador: crear regex para cambiar de pagina.
 filtrar Hindis
 agregar actores
 Traer series
