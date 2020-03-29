@@ -61,29 +61,38 @@ function obtenerPeliculas(e) {
 }
 
 function mostrarNavegacionPaginas(url, pagina, paginasTotales) {
-  const peliculasNav = document.querySelector('#peliculas-nav');
-  const peliculasNavNumero = document.querySelector('.peliculas-nav-numero');
-  peliculasNavNumero.textContent = pagina;
-
-  peliculasNav.addEventListener('click', (e) => {
-    const boton = e.target.dataset.boton;
-    
-
-    if (boton == 'proxima' && pagina < paginasTotales) {
-      pagina += 1;
-      peliculasNavNumero.textContent = pagina;
-      urlNueva = url.replace('&page=1', '') + '&page=' + (pagina);
-      urlNuevaIngles = urlNueva.replace('language=es', '') + '&language=en';
-    } 
-    else if (boton == 'anterior') {
-      pagina -= 1;
-      peliculasNavNumero.textContent = pagina;
-      urlNueva = url.replace('&page=2', '') + '&page=' + (pagina);
-      urlNuevaIngles = urlNueva.replace('&language=es', '') + '&language=en';
-    }
-
-    obtenerInfoPagina(e, urlNueva).then(obtenerInfoPaginaIngles(urlNuevaIngles));
+  const peliculasNav = document.querySelectorAll('.peliculas-nav');
+  const peliculasNavNumero = document.querySelectorAll('.peliculas-nav-numero');
+  peliculasNavNumero.forEach((nav) => {
+    nav.textContent = pagina;
   });
+
+  peliculasNav.forEach((nav) => {
+    nav.addEventListener('click', (e) => {
+      const boton = e.target.dataset.boton;
+      
+  
+      if (boton == 'proxima' && pagina < paginasTotales) {
+        pagina += 1;
+        peliculasNavNumero.forEach((nav) => {
+          nav.textContent = pagina;
+        });
+        urlNueva = url.replace('&page=1', '') + '&page=' + (pagina);
+        urlNuevaIngles = urlNueva.replace('language=es', '') + '&language=en';
+      } 
+      else if (boton == 'anterior') {
+        pagina -= 1;
+        peliculasNavNumero.forEach((nav) => {
+          nav.textContent = pagina;
+        });
+        urlNueva = url.replace('&page=2', '') + '&page=' + (pagina);
+        urlNuevaIngles = urlNueva.replace('&language=es', '') + '&language=en';
+      }
+  
+      obtenerInfoPagina(e, urlNueva).then(obtenerInfoPaginaIngles(urlNuevaIngles));
+    });
+  })
+
 }
 
 function obtenerInfoPaginaIngles(url) {
@@ -216,8 +225,11 @@ function configurarPagina() {
   obtenerGeneros();
   
   form.addEventListener('submit', (e) => {
-    const peliculasNav = document.querySelector('#peliculas-nav');
-    peliculasNav.classList.remove('invisible');
+    const peliculasNav = document.querySelectorAll('.peliculas-nav');
+
+    peliculasNav.forEach((nav) => {
+      nav.classList.remove('invisible');
+    })
     obtenerPeliculas(e).then(obtenerInfoIngles(e))
   })
 }
