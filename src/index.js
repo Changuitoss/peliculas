@@ -54,8 +54,6 @@ function obtenerPeliculas(e) {
   return fetch(url)
     .then((r) => r.json())
     .then((resultadoPeliculas) => {
-      console.log(resultadoPeliculas)
-      console.log('totalresultado espanol: ', resultadoPeliculas.total_results)
       const { page: pagina, total_pages: paginasTotales, results: resultados} = resultadoPeliculas;
       mostrarPeliculas(resultados);
       mostrarNavegacionPaginas(url, pagina, paginasTotales);
@@ -115,14 +113,12 @@ function obtenerInfoIngles(e) {
 
   return fetch(url)
     .then((r) => r.json())
-    .then((resultadoPeliculas) => {
-      console.log('totalresultado ingles: ', resultadoPeliculas.total_results)
-      return mostrarInfoIngles(resultadoPeliculas.results)});
+    .then((resultadoPeliculas) => mostrarInfoIngles(resultadoPeliculas.results));
 }
 
 function mostrarInfoIngles(peliculas) {
-  const imagenBox = document.querySelectorAll('.imagen-box');
-  imagenBox.innerHTML = '';
+/*   const imagenBox = document.querySelectorAll('.imagen-box');
+  imagenBox.innerHTML = ''; */
   const titulos = document.querySelectorAll('#card-titulo');
 
   for (var i = 0; i < peliculas.length; i += 1) {
@@ -133,10 +129,10 @@ function mostrarInfoIngles(peliculas) {
     const release = releaseEnglish[2] + '-' + releaseEnglish[1] + '-' + releaseEnglish[0];
 
     //Crea la parte de la imagen de la CARD, con el poster en ingles (viene de otro fetch)
-    const imagen = document.createElement('img');
+/*     const imagen = document.createElement('img');
     imagen.classList.add('card-img');
     imagen.setAttribute('src', `https://image.tmdb.org/t/p/w500${tapa}`)
-    imagenBox[i].appendChild(imagen);
+    imagenBox[i].appendChild(imagen); */
 
     //Agrega subtitulo si el titulo principal esta en algun idioma que no sea ingles o espaniol
     if (idioma != 'en' && idioma != 'es' && titulos[i].firstChild.textContent.toLowerCase() != titulo.toLowerCase()) {
@@ -159,6 +155,7 @@ function mostrarPeliculas(peliculas) {
   peliculasDOM.innerHTML = '';
 
   peliculas.forEach((pelicula) => {
+    const tapa = pelicula.poster_path;
     const titulo = pelicula.original_title;
     const idioma = pelicula.original_language;
     const puntaje = pelicula.vote_average;
@@ -176,6 +173,11 @@ function mostrarPeliculas(peliculas) {
     const cardImgColumna = document.createElement('div');
     cardImgColumna.classList.add('col-md-4', 'imagen-box');
     cardRow.appendChild(cardImgColumna);
+    /// nuevo
+    const imagen = document.createElement('img');
+    imagen.classList.add('card-img');
+    imagen.setAttribute('src', `https://image.tmdb.org/t/p/w500${tapa}`)
+    cardImgColumna.appendChild(imagen);
 
     //Crea la parte de la info de la CARD
     const cardInfoColumna = document.createElement('div');
