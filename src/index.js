@@ -126,8 +126,8 @@ function obtenerInfoIngles(e) {
 }
 
 function mostrarInfoIngles(peliculas) {
-/*   const imagenBox = document.querySelectorAll('.imagen-box');
-  imagenBox.innerHTML = ''; */
+  const imagenBox = document.querySelectorAll('.imagen-box');
+  imagenBox.innerHTML = '';
   const titulos = document.querySelectorAll('#card-titulo');
 
   for (var i = 0; i < peliculas.length; i += 1) {
@@ -138,10 +138,10 @@ function mostrarInfoIngles(peliculas) {
     const release = releaseEnglish[2] + '-' + releaseEnglish[1] + '-' + releaseEnglish[0];
 
     //Crea la parte de la imagen de la CARD, con el poster en ingles (viene de otro fetch)
-/*     const imagen = document.createElement('img');
+    const imagen = document.createElement('img');
     imagen.classList.add('card-img');
     imagen.setAttribute('src', `https://image.tmdb.org/t/p/w500${tapa}`)
-    imagenBox[i].appendChild(imagen); */
+    imagenBox[i].appendChild(imagen);
 
     //Agrega subtitulo si el titulo principal esta en algun idioma que no sea ingles o espaniol
     if (idioma != 'en' && idioma != 'es' && titulos[i].firstChild.textContent.toLowerCase() != titulo.toLowerCase()) {
@@ -182,11 +182,6 @@ function mostrarPeliculas(peliculas) {
     const cardImgColumna = document.createElement('div');
     cardImgColumna.classList.add('col-md-4', 'imagen-box');
     cardRow.appendChild(cardImgColumna);
-    /// nuevo
-    const imagen = document.createElement('img');
-    imagen.classList.add('card-img');
-    imagen.setAttribute('src', `https://image.tmdb.org/t/p/w500${tapa}`)
-    cardImgColumna.appendChild(imagen);
 
     //Crea la parte de la info de la CARD
     const cardInfoColumna = document.createElement('div');
