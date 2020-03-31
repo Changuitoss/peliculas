@@ -95,6 +95,7 @@ export function mostrarPeliculas(peliculas, tipo) {
 }
 
 export function mostrarNavegacionPaginas(url, pagina, paginasTotales, tipo) {
+  console.log('mostrarNavegacionPaginas url: ', url)
   const peliculasNav = document.querySelectorAll('.peliculas-nav');
   const peliculasNavNumero = document.querySelectorAll('.peliculas-nav-numero');
   peliculasNavNumero.forEach((nav) => {
@@ -106,6 +107,9 @@ export function mostrarNavegacionPaginas(url, pagina, paginasTotales, tipo) {
     let urlNuevaIngles;
     nav.addEventListener('click', (e) => {
       const boton = e.target.dataset.boton;
+      console.log('boton: ', boton)
+      console.log('pagina: ', pagina)
+      console.log('paginasTotales: ', paginasTotales)
       
       if (boton == 'proxima' && pagina < paginasTotales) {
         pagina += 1;
@@ -113,7 +117,10 @@ export function mostrarNavegacionPaginas(url, pagina, paginasTotales, tipo) {
           nav.textContent = pagina;
         });
         urlNueva = url.replace('&page=1', '') + '&page=' + (pagina);
+        console.log('urlNueva: ', urlNueva)
         urlNuevaIngles = urlNueva.replace('language=es', '') + '&language=en';
+        obtenerInfoPagina(e, urlNueva, tipo).then(obtenerInfoPaginaIngles(urlNuevaIngles, tipo));
+
       } 
       else if (boton == 'anterior') {
         pagina -= 1;
@@ -122,9 +129,9 @@ export function mostrarNavegacionPaginas(url, pagina, paginasTotales, tipo) {
         });
         urlNueva = url.replace('&page=2', '') + '&page=' + (pagina);
         urlNuevaIngles = urlNueva.replace('&language=es', '') + '&language=en';
+        obtenerInfoPagina(e, urlNueva, tipo).then(obtenerInfoPaginaIngles(urlNuevaIngles, tipo));
+
       }
-  
-      obtenerInfoPagina(e, urlNueva, tipo).then(obtenerInfoPaginaIngles(urlNuevaIngles, tipo));
     });
   })
 
@@ -140,6 +147,9 @@ export function mostrarInfoIngles(peliculas, tipo) {
   for (var i = 0; i < peliculas.length; i += 1) {
     let titulo;
     let release;
+    const tapa = peliculas[i].poster_path;
+    const idioma = peliculas[i].original_language;
+
     if (tipo == 'movie') {
       titulo = peliculas[i].title;
       let releaseEnglish = peliculas[i].release_date.split('-');
@@ -150,13 +160,6 @@ export function mostrarInfoIngles(peliculas, tipo) {
       let releaseEnglish = peliculas[i].first_air_date.split('-');
       release = releaseEnglish[2] + '-' + releaseEnglish[1] + '-' + releaseEnglish[0];
     }
-
-
-    const tapa = peliculas[i].poster_path;
-    const idioma = peliculas[i].original_language;
-    //const titulo = peliculas[i].title;
-    //const releaseEnglish = peliculas[i].release_date.split('-');
-    //const release = releaseEnglish[2] + '-' + releaseEnglish[1] + '-' + releaseEnglish[0];
 
     //Crea la parte de la imagen de la CARD, con el poster en ingles (viene de otro fetch)
     const imagen = document.createElement('img');

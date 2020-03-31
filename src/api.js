@@ -56,6 +56,7 @@ export function obtenerInfoPaginaIngles(url, tipo) {
 }
 
 export function obtenerInfoPagina(e, url, tipo) {
+  console.log('url obtenerInfoPagina: ', url)
   return fetch(url)
   .then((r) => r.json())
   .then((resultadoPeliculas) => {
