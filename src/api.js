@@ -17,15 +17,17 @@ export function obtenerPeliculas(e) {
   const desdeAno = e.target.anodesde.value;
   const hastaAno = e.target.anohasta.value;
   const $votos = 200; // OJO que si lo cambias, tenes que cambiar EN y ES, sino se desfasan los resultados
+  let url;
 
-  const url =  `https://api.themoviedb.org/3/discover/${tipo}?api_key=e4c325cfe50ba68791f7165086f631e4&language=es&sort_by=vote_average.desc&include_adult=false&include_video=false&page=1&with_genres=${genero}&primary_release_date.gte=${desdeAno}-01-01&primary_release_date.lte=${hastaAno}-12-12&vote_count.gte=${$votos}&include_image_language=en`
+  tipo == 'movie' ? url = `https://api.themoviedb.org/3/discover/${tipo}?api_key=e4c325cfe50ba68791f7165086f631e4&language=es&sort_by=vote_average.desc&include_adult=false&include_video=false&page=1&with_genres=${genero}&primary_release_date.gte=${desdeAno}-01-01&primary_release_date.lte=${hastaAno}-12-12&vote_count.gte=${$votos}&include_image_language=en` 
+                  : url = `https://api.themoviedb.org/3/discover/${tipo}?api_key=e4c325cfe50ba68791f7165086f631e4&language=es&sort_by=vote_average.desc&page=1&with_genres=${genero}&first_air_date.gte=${desdeAno}-01-01&first_air_date.lte=${hastaAno}-12-12&vote_count.gte=${$votos}&include_image_language=en`
 
   return fetch(url)
     .then((r) => r.json())
     .then((resultadoPeliculas) => {
       const { page: pagina, total_pages: paginasTotales, results: resultados} = resultadoPeliculas;
-      mostrarPeliculas(resultados);
-      mostrarNavegacionPaginas(url, pagina, paginasTotales);
+      mostrarPeliculas(resultados, tipo);
+      mostrarNavegacionPaginas(url, pagina, paginasTotales, tipo);
     });
 }
 
@@ -36,26 +38,28 @@ export function obtenerInfoIngles(e) {
   const desdeAno = e.target.anodesde.value;
   const hastaAno = e.target.anohasta.value;
   const $votos = 200;  // OJO que si lo cambias, tenes que cambiar EN y ES, sino se desfasan los resultados
+  let url;
 
-  const url =  `https://api.themoviedb.org/3/discover/${tipo}?api_key=e4c325cfe50ba68791f7165086f631e4&language=en&sort_by=vote_average.desc&include_adult=false&include_video=false&page=1&with_genres=${genero}&primary_release_date.gte=${desdeAno}-01-01&primary_release_date.lte=${hastaAno}-12-12&vote_count.gte=${$votos}&include_image_language=en`
+  tipo == 'movie' ? url = `https://api.themoviedb.org/3/discover/${tipo}?api_key=e4c325cfe50ba68791f7165086f631e4&language=en&sort_by=vote_average.desc&include_adult=false&include_video=false&page=1&with_genres=${genero}&primary_release_date.gte=${desdeAno}-01-01&primary_release_date.lte=${hastaAno}-12-12&vote_count.gte=${$votos}&include_image_language=en` 
+                  : url = `https://api.themoviedb.org/3/discover/${tipo}?api_key=e4c325cfe50ba68791f7165086f631e4&language=en&sort_by=vote_average.desc&page=1&with_genres=${genero}&first_air_date.gte=${desdeAno}-01-01&first_air_date.lte=${hastaAno}-12-12&vote_count.gte=${$votos}&include_image_language=en`
 
   return fetch(url)
     .then((r) => r.json())
     .then((resultadoPeliculas) => resultadoPeliculas.results)
-    .then((results) => mostrarInfoIngles(results))
+    .then((results) => mostrarInfoIngles(results, tipo))
 }
 
-export function obtenerInfoPaginaIngles(url) {
+export function obtenerInfoPaginaIngles(url, tipo) {
   return fetch(url)
     .then((r) => r.json())
-    .then((resultadoPeliculas) => mostrarInfoIngles(resultadoPeliculas.results));
+    .then((resultadoPeliculas) => mostrarInfoIngles(resultadoPeliculas.results, tipo));
 }
 
-export function obtenerInfoPagina(e, url) {
+export function obtenerInfoPagina(e, url, tipo) {
   return fetch(url)
   .then((r) => r.json())
   .then((resultadoPeliculas) => {
     const { page: pagina, total_pages: paginasTotales, results: resultados} = resultadoPeliculas;
-    mostrarPeliculas(resultados);
+    mostrarPeliculas(resultados, tipo);
   })
 }

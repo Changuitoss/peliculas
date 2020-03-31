@@ -28,18 +28,27 @@ export function mostrarGeneros(generosArray) {
   });
 }
 
-export function mostrarPeliculas(peliculas) {
+export function mostrarPeliculas(peliculas, tipo) {
   const peliculasDOM = document.querySelector('#peliculas');
   peliculasDOM.innerHTML = '';
 
   peliculas.forEach((pelicula) => {
+    let titulo;
+    let release;
+    if (tipo == 'movie') {
+      titulo = pelicula.original_title;
+      let releaseEnglish = pelicula.release_date.split('-');
+      release = releaseEnglish[2] + '-' + releaseEnglish[1] + '-' + releaseEnglish[0];
+    }
+    else if (tipo == 'tv') {
+      titulo = pelicula.original_name;
+      let releaseEnglish = pelicula.first_air_date.split('-');
+      release = releaseEnglish[2] + '-' + releaseEnglish[1] + '-' + releaseEnglish[0];
+    }
     const tapa = pelicula.poster_path;
-    const titulo = pelicula.original_title;
     const idioma = pelicula.original_language;
     const puntaje = pelicula.vote_average;
     const resumen = pelicula.overview;
-    const releaseEnglish = pelicula.release_date.split('-');
-    const release = releaseEnglish[2] + '-' + releaseEnglish[1] + '-' + releaseEnglish[0];
 
     //Crea la parte del contenedor de la imagen de la CARD
     const cardImgContainer = document.createElement('div');
@@ -85,7 +94,7 @@ export function mostrarPeliculas(peliculas) {
   })
 }
 
-export function mostrarNavegacionPaginas(url, pagina, paginasTotales) {
+export function mostrarNavegacionPaginas(url, pagina, paginasTotales, tipo) {
   const peliculasNav = document.querySelectorAll('.peliculas-nav');
   const peliculasNavNumero = document.querySelectorAll('.peliculas-nav-numero');
   peliculasNavNumero.forEach((nav) => {
@@ -98,7 +107,6 @@ export function mostrarNavegacionPaginas(url, pagina, paginasTotales) {
     nav.addEventListener('click', (e) => {
       const boton = e.target.dataset.boton;
       
-  
       if (boton == 'proxima' && pagina < paginasTotales) {
         pagina += 1;
         peliculasNavNumero.forEach((nav) => {
@@ -116,23 +124,39 @@ export function mostrarNavegacionPaginas(url, pagina, paginasTotales) {
         urlNuevaIngles = urlNueva.replace('&language=es', '') + '&language=en';
       }
   
-      obtenerInfoPagina(e, urlNueva).then(obtenerInfoPaginaIngles(urlNuevaIngles));
+      obtenerInfoPagina(e, urlNueva, tipo).then(obtenerInfoPaginaIngles(urlNuevaIngles, tipo));
     });
   })
 
 }
 
-export function mostrarInfoIngles(peliculas) {
+export function mostrarInfoIngles(peliculas, tipo) {
   const imagenBox = Array.from(document.querySelectorAll('.imagen-box'));
   imagenBox.innerHTML = '';
   const titulos = document.querySelectorAll('#card-titulo');
+  console.log('peliculas ingles: ', peliculas)
+  console.log('tipo ingles: ', tipo)
 
   for (var i = 0; i < peliculas.length; i += 1) {
+    let titulo;
+    let release;
+    if (tipo == 'movie') {
+      titulo = peliculas[i].title;
+      let releaseEnglish = peliculas[i].release_date.split('-');
+      release = releaseEnglish[2] + '-' + releaseEnglish[1] + '-' + releaseEnglish[0];
+    }
+    else if (tipo == 'tv') {
+      titulo = peliculas[i].original_name;
+      let releaseEnglish = peliculas[i].first_air_date.split('-');
+      release = releaseEnglish[2] + '-' + releaseEnglish[1] + '-' + releaseEnglish[0];
+    }
+
+
     const tapa = peliculas[i].poster_path;
     const idioma = peliculas[i].original_language;
-    const titulo = peliculas[i].title;
-    const releaseEnglish = peliculas[i].release_date.split('-');
-    const release = releaseEnglish[2] + '-' + releaseEnglish[1] + '-' + releaseEnglish[0];
+    //const titulo = peliculas[i].title;
+    //const releaseEnglish = peliculas[i].release_date.split('-');
+    //const release = releaseEnglish[2] + '-' + releaseEnglish[1] + '-' + releaseEnglish[0];
 
     //Crea la parte de la imagen de la CARD, con el poster en ingles (viene de otro fetch)
     const imagen = document.createElement('img');
