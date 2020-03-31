@@ -122,11 +122,12 @@ function obtenerInfoIngles(e) {
 
   return fetch(url)
     .then((r) => r.json())
-    .then((resultadoPeliculas) => mostrarInfoIngles(resultadoPeliculas.results));
+    .then((resultadoPeliculas) => resultadoPeliculas.results)
+    .then((results) => mostrarInfoIngles(results))
 }
 
 function mostrarInfoIngles(peliculas) {
-  const imagenBox = document.querySelectorAll('.imagen-box');
+  const imagenBox = Array.from(document.querySelectorAll('.imagen-box'));
   imagenBox.innerHTML = '';
   const titulos = document.querySelectorAll('#card-titulo');
 

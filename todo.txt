@@ -1,7 +1,0 @@
-BUG: por que hay que buscar 2 veces para que aparezcan las imagenes?
-ESTA EN nETFLIX? otros servicios?
-paginador: falta el previous, y hacerlo condicional.
-filtrar Hindis
-agregar actores
-Traer series
-hacer click en "mas info" y que puedas ver toda la info en una pagina nueva?
