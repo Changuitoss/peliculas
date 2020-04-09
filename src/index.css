@@ -1,61 +1,115 @@
 * {
   margin: 0;
   padding: 0; 
-  box-sizing: inherit;
-}
-
-html {
   box-sizing: border-box;
+}
+
+body {
   font-size: 62.5%;
-}
-
-#body {
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;;
   color: #fff;
-  background: linear-gradient(90deg, rgba(113,115,61,0.7400093826593137) 0%, rgba(107,116,16,0.4795051809786415) 13%, rgba(20,20,0,0.12936512495623254) 100%);
+  background: linear-gradient(90deg, rgba(113,115,61,0.7400093826593137) 0%, rgba(107,116,16,0.4795051809786415) 20%, rgba(20,20,0,0.12936512495623254) 100%);
   background-color: #000;
+  padding: 30px;
 }
 
+.container {
+  max-width: 90vw;
+  margin: 0 auto;
+}
 
-#titulo {
-  font-family: 'Permanent Marker', cursive;
+.navegacion {
+  background: linear-gradient(90deg, rgba(113,115,61,0.7400093826593137) 0%, rgba(107,116,16,0.4795051809786415) 20%, rgba(20,20,0,0.12936512495623254) 100%);
+  background-color: #000;
+  padding-bottom: 1rem;
+  height: 4.5rem;
+  width: 100%;
   text-align: center;
-  margin: 4rem;
-  font-size: 4rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .4), inset 0 -.1rem .5rem rgba(0, 0, 0, .4)     
+ }
+
+.navegacion__logo-box {
+  position: fixed;
+  top: .1rem;
+  left: 4rem;
 }
 
-label {
+.navegacion__titulo {
+  font-family: 'Permanent Marker', cursive, -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;;
+  font-size: 2.5rem;
+  color: yellow;
+  text-shadow: .1rem .2rem .2rem black;
+}
+
+.navegacion__formulario {
+  position: fixed;
+  top: 1.3rem;
+  left: 21rem;
+}
+
+.formulario__label {
+  margin-left: 2.5rem;
   font-weight: 600;
-  font-size: 1.5rem;
+  font-size: 1rem;
+  font-family: Helvetica, sans-serif;
+  text-shadow: .1rem .1rem black;
 }
 
-select.seleccion {
-  font-size: 1.5rem;
-  border: none;
+.formulario__select {
   background-color: transparent;
-  color: rgb(238, 255, 0);
+  color: yellow;
+  border: none;
 }
 
-option {
-  color: black;
+.formulario__select .formulario__opcion {
+  background-color: rgb(24, 24, 24);
+  font-size: 1rem;
+  color: rgba(238, 255, 0, .75);
 }
 
-button.submit {
+.formulario__boton {
+  margin-left: 3rem;
+  background-color: black;
   font-family: 'Permanent Marker', cursive;
-  font-size: 1.5rem;
-  height: 4rem;
-  width: 7rem;
+  font-size: 1.1rem;
+  color: white;
+  height: 1.8rem;
+  width: 4rem;
+  border: 1px solid yellow;
   border-radius: .8rem;
+  box-shadow: 0 .2rem .3rem rgba(242, 239, 53, .5);
+  transition: all .02s;
+}
+
+.formulario__boton:hover {
+  transform: translateY(-.2rem);
+  box-shadow: 0 .4rem .5rem rgba(242, 239, 53, .5);
+  color: yellow;
+}
+
+.formulario__boton:active {
+  transform: translateY(-.1rem);
+  box-shadow: 0 .3rem .4rem rgba(242, 239, 53, .5);
 }
 
 #peliculas-nav {
   font-size: 2rem;
   font-weight: 700;
   color: yellow;
-  margin-bottom: 2rem;
+  margin: 4rem 2rem;
 }
 
 .peliculas-nav-numero {
   color: white;
+}
+
+.peliculas__box {
+  width: 35rem;
+  height: 35rem;
+  background-color: rgba(0, 0, 0, .4);
 }
 
 .invisible {
@@ -77,6 +131,7 @@ div.card-body {
   font-weight: 200;
   font-family: 'Permanent Marker', cursive;
   font-size: 2rem;
+  text-shadow: .1rem .2rem  black;
 }
 
 h4#card-titulo-alternativo {
@@ -85,7 +140,7 @@ h4#card-titulo-alternativo {
 }
 
 #card-descripcion {
-  font-size: 1.8rem;
+  font-size: 1.2rem;
   font-weight: 100;
 }
 
@@ -100,7 +155,7 @@ p.puntaje {
 }
 
 #release {
-  font-size: 1.7rem;
+  font-size: 1.2rem;
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
   font-weight: 600;
   margin-top: 2rem;

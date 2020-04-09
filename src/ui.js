@@ -7,6 +7,7 @@ export function mostrarAnos(selector) {
 
   for (var i = 1960; i <= esteAno; i += 1) {
     const opcion = document.createElement('option');
+    opcion.classList.add('formulario__opcion');
     opcion.setAttribute('value', i)
     opcion.textContent = i;
     selector.appendChild(opcion);
@@ -22,6 +23,7 @@ export function mostrarGeneros(generosArray) {
     const nombre = genero.name;
     const id = genero.id;
     const opcion = document.createElement('option');
+    opcion.classList.add('formulario__opcion')
     opcion.setAttribute('value', id);
     opcion.textContent = nombre;
     opcionesGeneros.appendChild(opcion);

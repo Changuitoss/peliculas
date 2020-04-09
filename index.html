@@ -5,40 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./src/index.css">
   <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet"> 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <title>Peliculas recomendadasss </title>
 </head>
-<body id="body">
+<body>
+
   <div class="container">
-    <h1 id="titulo">Que ver?!?</h1>
-    <div class="row">
-      <div class="col-3">
-        <form>
+      <div class="navegacion">
+        <div class="navegacion__logo-box">
+          <h1 id="titulo" class="navegacion__titulo">Que ver?!?</h1>
+        </div>
+        
+        <form class='navegacion__formulario'>  
           <div class="form-group">
-            <label for="tipo">Tipo: </label>
-              <select id="tipo" class="form-control-sm seleccion">
-                <option value="movie">Peliculas</option>
-                <option value="tv">Series</option>
+            <label for="tipo" class="formulario__label">Tipo: </label>
+              <select id="tipo" class="form-control-sm formulario__select">
+                <option value="movie" class="formulario__opcion">Peliculas</option>
+                <option value="tv" class="formulario__opcion">Series</option>
               </select>
+              <label for="genero" class="formulario__label">Genero: 
+                <select id="genero" class="form-control-sm seleccion formulario__select"></select>
+              </label>
+              <label for="anodesde" class="formulario__label">Desde que anio? 
+                <select id="anodesde" class="form-control-sm seleccion formulario__select"></select>
+              </label>
+              <label for="anohasta" class="formulario__label">Hasta que anio? 
+                <select id="anohasta" class="form-control-sm seleccion hasta formulario__select"></select>
+              </label>
+              <button type="submit" class="btn btn-warning submit formulario__boton">VER!</button>
           </div>
-          <div class="form-group">
-            <label for="genero">Genero: 
-              <select id="genero" class="form-control-sm seleccion"></select>
-            </label>
-          </div>
-          <div class="form-group">
-            <label for="anodesde">Desde que anio? 
-              <select id="anodesde" class="form-control-sm seleccion"></select>
-            </label>
-          </div>
-          <div class="form-group">
-            <label for="anohasta">Hasta que anio? 
-              <select id="anohasta" class="form-control-sm seleccion hasta"></select>
-            </label>
-          </div>
-          <button type="submit" class="btn btn-warning submit">VER</button>
         </form>
       </div>
+      <div class="peliculas__box">
+        pelicula
+      </div>
+
       <div id="peliculas-container" class="col-9">
         <div id="peliculas-nav" class="invisible peliculas-nav">
           <span class="peliculas-nav-boton" data-boton="anterior"><<  </span>
@@ -46,6 +46,9 @@
           <span class="peliculas-nav-boton" data-boton="proxima"> >></span>
         </div>
         <div id="peliculas"></div>
+
+
+
         <div id="peliculas-nav" class="invisible peliculas-nav">
           <span class="peliculas-nav-boton" data-boton="anterior"><<  </span>
           <span class="peliculas-nav-numero"></span>
