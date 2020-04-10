@@ -95,6 +95,7 @@ export function mostrarPeliculas(peliculas, tipo) {
       peliculasBox.appendChild(peliculaRelease);
     }
     const peliculaDescripcion = document.createElement('p');
+    peliculaDescripcion.setAttribute('id', 'pelicula-descripcion');
     peliculaDescripcion.classList.add('peliculas-box__descripcion');
     peliculaDescripcion.textContent = resumen;
     peliculasBox.appendChild(peliculaDescripcion); 
