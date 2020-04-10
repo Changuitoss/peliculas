@@ -31,8 +31,8 @@ export function mostrarGeneros(generosArray) {
 }
 
 export function mostrarPeliculas(peliculas, tipo) {
-  const peliculasDOM = document.querySelector('#peliculas');
-  peliculasDOM.innerHTML = '';
+  const peliculasContainer = document.querySelector('.peliculas-container');
+  peliculasContainer.innerHTML = '';
 
   peliculas.forEach((pelicula) => {
     let titulo;
@@ -52,52 +52,56 @@ export function mostrarPeliculas(peliculas, tipo) {
     const puntaje = pelicula.vote_average;
     const resumen = pelicula.overview;
 
+/*     <div class="peliculas-box">
+    <h2 class="peliculas-box__titulo">Batman the dark Knight</h2>
+    <h3 class="peliculas-box__subtitulo">Subtitulo</h3>
+    <img src="./src/img/batman.jpg" alt="Poster" class="peliculas-box__imagen">
+    <p class="peliculas-box__puntaje">8</p>
+    <p class="peliculas-box__release"><span>Estreno: </span>23-02-1987</p>
+    <p class="peliculas-box__descripcion">Las fuerzas de Saruman han sido destruidas, y su fortaleza sitiada. Ha llegado el momento de que se decida el destino de la Tierra Media, y por primera vez en mucho tiempo, parece que hay una pequeña esperanza. La atención del señor oscuro Sauron se centra ahora en Gondor, el último reducto de los hombres, y del cual Aragorn tendrá que reclamar el trono para ocupar su puesto de Rey. Pero las fuerzas de Sauron ya se preparan para lanzar el último y definitivo ataque contra el reino de Gondor, la batalla que decidirá el destino de todos. Mientras tanto, Frodo y Sam continuan su camino hacia Mordor, a la espera de que Sauron no repare en que dos pequeños Hobbits se acercan cada día más al final de su camino, el Monte del Destino.</p>
+    <a href="#" class="peliculas-box__boton">Ver mas</a>
+  </div> */
+
     //Crea la parte del contenedor de la imagen de la CARD
-    const cardImgContainer = document.createElement('div');
-    cardImgContainer.classList.add('card', 'mb-3');
-    cardImgContainer.setAttribute('id', 'card');
-    const cardRow = document.createElement('div');
-    cardRow.classList.add('row', 'no-gutters');
-    cardImgContainer.appendChild(cardRow);
-    const cardImgColumna = document.createElement('div');
-    cardImgColumna.classList.add('col-md-4', 'imagen-box');
-    cardRow.appendChild(cardImgColumna);
+    const peliculasBox = document.createElement('div');
+    peliculasBox.classList.add('peliculas-box');
+    peliculasBox.setAttribute('id', 'card');
+    peliculasContainer.appendChild(peliculasBox);
+
 
     //Crea la parte de la info de la CARD
-    const cardInfoColumna = document.createElement('div');
-    cardInfoColumna.classList.add('col-md-8');
-    cardRow.appendChild(cardInfoColumna);
-    const cardBody = document.createElement('div');
-    cardBody.classList.add('card-body');
-    cardInfoColumna.appendChild(cardBody);
-    const cardTitulo = document.createElement('h5');
-    cardTitulo.classList.add('card-title');
-    cardTitulo.setAttribute('id', 'card-titulo');
-    cardTitulo.textContent = titulo;
-    cardBody.appendChild(cardTitulo);
-    const cardPuntaje = document.createElement('p');
-    cardPuntaje.classList.add('badge', 'badge-warning', 'puntaje');
-    cardPuntaje.textContent = puntaje;
-    cardTitulo.appendChild(cardPuntaje);
-    if (idioma == 'en' || idioma == 'es') {
-      const fechaSalida = document.createElement('p');
-      fechaSalida.classList.add('card-text', 'release');
-      fechaSalida.setAttribute('id', 'release');
-      fechaSalida.textContent = `Estreno: ${release}`; 
-      cardTitulo.appendChild(fechaSalida);
-    }
-    const descripcion = document.createElement('p');
-    descripcion.classList.add('card-text');
-    descripcion.setAttribute('id', 'card-descripcion');
-    descripcion.textContent = resumen;
-    cardBody.appendChild(descripcion); 
+    const peliculaTitulo = document.createElement('h2');
+    peliculaTitulo.classList.add('peliculas-box__titulo');
+    peliculaTitulo.setAttribute('id', 'card-titulo');
+    peliculaTitulo.textContent = titulo;
+    peliculasBox.appendChild(peliculaTitulo)
 
-    peliculasDOM.appendChild(cardImgContainer)
+
+    const peliculaPuntaje = document.createElement('p');
+    peliculaPuntaje.classList.add('peliculas-box__puntaje');
+    peliculaPuntaje.textContent = puntaje;
+    peliculasBox.appendChild(peliculaPuntaje);
+
+    const peliculaImagen = document.createElement('img');
+    peliculaImagen.classList.add('peliculas-box__imagen');
+    peliculasBox.appendChild(peliculaImagen);
+
+    if (idioma == 'en' || idioma == 'es') {
+      const peliculaRelease = document.createElement('p');
+      peliculaRelease.classList.add('peliculas-box__release');
+      peliculaRelease.textContent = release;
+      const peliculaReleaseSpan = document.createElement('span');
+      peliculaRelease.appendChild(peliculaReleaseSpan); 
+      peliculasBox.appendChild(peliculaRelease);
+    }
+    const peliculaDescripcion = document.createElement('p');
+    peliculaDescripcion.classList.add('peliculas-box__descripcion');
+    peliculaDescripcion.textContent = resumen;
+    peliculasBox.appendChild(peliculaDescripcion); 
   })
 }
 
 export function mostrarNavegacionPaginas(url, pagina, paginasTotales, tipo) {
-  console.log('mostrarNavegacionPaginas url: ', url)
   const peliculasNav = document.querySelectorAll('.peliculas-nav');
   const peliculasNavNumero = document.querySelectorAll('.peliculas-nav-numero');
   peliculasNavNumero.forEach((nav) => {
@@ -109,9 +113,6 @@ export function mostrarNavegacionPaginas(url, pagina, paginasTotales, tipo) {
     let urlNuevaIngles;
     nav.addEventListener('click', (e) => {
       const boton = e.target.dataset.boton;
-      console.log('boton: ', boton)
-      console.log('pagina: ', pagina)
-      console.log('paginasTotales: ', paginasTotales)
       
       if (boton == 'proxima' && pagina < paginasTotales) {
         pagina += 1;
@@ -119,7 +120,6 @@ export function mostrarNavegacionPaginas(url, pagina, paginasTotales, tipo) {
           nav.textContent = pagina;
         });
         urlNueva = url.replace('&page=1', '') + '&page=' + (pagina);
-        console.log('urlNueva: ', urlNueva)
         urlNuevaIngles = urlNueva.replace('language=es', '') + '&language=en';
         obtenerInfoPagina(e, urlNueva, tipo).then(obtenerInfoPaginaIngles(urlNuevaIngles, tipo));
 
@@ -140,11 +140,9 @@ export function mostrarNavegacionPaginas(url, pagina, paginasTotales, tipo) {
 }
 
 export function mostrarInfoIngles(peliculas, tipo) {
-  const imagenBox = Array.from(document.querySelectorAll('.imagen-box'));
-  imagenBox.innerHTML = '';
-  const titulos = document.querySelectorAll('#card-titulo');
-  console.log('peliculas ingles: ', peliculas)
-  console.log('tipo ingles: ', tipo)
+  const peliculasBox = Array.from(document.querySelectorAll('.peliculas-box'));
+  //imagenBox.innerHTML = '';
+  const titulos = document.querySelectorAll('.peliculas-box__titulo');
 
   for (var i = 0; i < peliculas.length; i += 1) {
     let titulo;
@@ -164,10 +162,11 @@ export function mostrarInfoIngles(peliculas, tipo) {
     }
 
     //Crea la parte de la imagen de la CARD, con el poster en ingles (viene de otro fetch)
+    //console.log('imagenbox: ', imagenBox[i]);
     const imagen = document.createElement('img');
-    imagen.classList.add('card-img');
+    imagen.classList.add('peliculas-box__imagen');
     imagen.setAttribute('src', `https://image.tmdb.org/t/p/w500${tapa}`)
-    imagenBox[i].appendChild(imagen);
+    peliculasBox[i].appendChild(imagen);
 
     //Agrega subtitulo si el titulo principal esta en algun idioma que no sea ingles o espaniol
     if (idioma != 'en' && idioma != 'es' && titulos[i].firstChild.textContent.toLowerCase() != titulo.toLowerCase()) {

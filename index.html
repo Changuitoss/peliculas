@@ -11,50 +11,56 @@
 
   <div class="container">
       <div class="navegacion">
-        <div class="navegacion__logo-box">
-          <h1 id="titulo" class="navegacion__titulo">Que ver?!?</h1>
-        </div>
+          
+        <h1 id="titulo" class="navegacion__titulo">Que ver?!?</h1>
         
         <form class='navegacion__formulario'>  
-          <div class="form-group">
-            <label for="tipo" class="formulario__label">Tipo: </label>
-              <select id="tipo" class="form-control-sm formulario__select">
-                <option value="movie" class="formulario__opcion">Peliculas</option>
-                <option value="tv" class="formulario__opcion">Series</option>
-              </select>
-              <label for="genero" class="formulario__label">Genero: 
-                <select id="genero" class="form-control-sm seleccion formulario__select"></select>
-              </label>
-              <label for="anodesde" class="formulario__label">Desde que anio? 
-                <select id="anodesde" class="form-control-sm seleccion formulario__select"></select>
-              </label>
-              <label for="anohasta" class="formulario__label">Hasta que anio? 
-                <select id="anohasta" class="form-control-sm seleccion hasta formulario__select"></select>
-              </label>
-              <button type="submit" class="btn btn-warning submit formulario__boton">VER!</button>
-          </div>
+          <label for="tipo" class="formulario__label">Tipo: </label>
+          <select id="tipo" class="formulario__select">
+            <option value="movie" class="formulario__opcion">Peliculas</option>
+            <option value="tv" class="formulario__opcion">Series</option>
+          </select>
+          <label for="genero" class="formulario__label">Genero: 
+          <select id="genero" class="seleccion formulario__select"></select>
+          </label>
+          <label for="anodesde" class="formulario__label">Desde que anio? 
+          <select id="anodesde" class="seleccion formulario__select"></select>
+          </label>
+          <label for="anohasta" class="formulario__label">Hasta que anio? 
+          <select id="anohasta" class="seleccion hasta formulario__select"></select>
+          </label>
+          <button type="submit" class="submit formulario__boton">VER!</button>
         </form>
       </div>
-      <div class="peliculas__box">
-        pelicula
-      </div>
 
-      <div id="peliculas-container" class="col-9">
-        <div id="peliculas-nav" class="invisible peliculas-nav">
-          <span class="peliculas-nav-boton" data-boton="anterior"><<  </span>
-          <span class="peliculas-nav-numero"></span>
-          <span class="peliculas-nav-boton" data-boton="proxima"> >></span>
+      <div class='peliculas-container'></div>
+<!-- 
+      <div class='peliculas-container'>
+        <div class="peliculas-box">
+          <h2 class="peliculas-box__titulo">Batman the dark Knight</h2>
+          <h3 class="peliculas-box__subtitulo">Subtitulo</h3>
+          <img src="./src/img/lotr.jpg" alt="Poster" class="peliculas-box__imagen">
+          <p class="peliculas-box__puntaje">8</p>
+          <p class="peliculas-box__release"><span>Estreno: </span>23-02-1987</p>
+          <p class="peliculas-box__descripcion">Las fuerzas de Saruman han sido destruidas, y su fortaleza sitiada. Ha llegado el momento de que se decida el destino de la Tierra Media, y por primera vez en mucho tiempo, parece que hay una pequeña esperanza. La atención del señor oscuro Sauron se centra ahora en Gondor, el último reducto de los hombres, y del cual Aragorn tendrá que reclamar el trono para ocupar su puesto de Rey. Pero las fuerzas de Sauron ya se preparan para lanzar el último y definitivo ataque contra el reino de Gondor, la batalla que decidirá el destino de todos. Mientras tanto, Frodo y Sam continuan su camino hacia Mordor, a la espera de que Sauron no repare en que dos pequeños Hobbits se acercan cada día más al final de su camino, el Monte del Destino.</p>
+          <a href="#" class="peliculas-box__boton">Ver mas</a>
+        </div>
+
+         <div class="invisible peliculas-nav">
+          <span class="peliculas-nav__boton" data-boton="anterior"><<  </span>
+          <span class="peliculas-nav__numero"></span>
+          <span class="peliculas-nav__boton" data-boton="proxima"> >></span>
         </div>
         <div id="peliculas"></div>
 
 
 
-        <div id="peliculas-nav" class="invisible peliculas-nav">
-          <span class="peliculas-nav-boton" data-boton="anterior"><<  </span>
-          <span class="peliculas-nav-numero"></span>
-          <span class="peliculas-nav-boton" data-boton="proxima"> >></span>
+        <div class="invisible peliculas-nav">
+          <span class="peliculas-nav__boton" data-boton="anterior"><<  </span>
+          <span class="peliculas-nav__numero"></span>
+          <span class="peliculas-nav__boton" data-boton="proxima"> >></span>
         </div>
-      </div>
+      </div>  -->
 
     </div>
   </div>
