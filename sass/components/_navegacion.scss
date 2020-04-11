@@ -1,0 +1,81 @@
+.navegacion {
+  background: linear-gradient(to right, $color-background-1 0%, $color-background-2 95%, $color-background-2 100%);
+  background-color: #000;
+  padding-bottom: 1rem;
+  height: 4.5rem;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 .5rem 1rem $color-shadow, inset 0 -.1rem .5rem $color-shadow;
+  position: fixed;
+  grid-row: 1 / 2;
+  grid-column:  1 / -1;
+  display: grid; 
+  grid-template-columns: 1fr 4fr;
+
+  &__titulo {
+    font-family: 'Permanent Marker', cursive, -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;;
+    font-size: 2.5rem;
+    margin-top: .3rem;
+    color: $color-primario;
+    text-shadow: .1rem .2rem .2rem black;
+    grid-column: 1 / 2;
+  }
+
+  &__formulario {
+    margin-left: .7rem;
+    padding-top: 1.2rem;
+    text-align: left;
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+  }
+ }
+
+
+.formulario__label {
+  margin-left: 2rem;
+  font-weight: 600;
+  font-size: 1rem;
+  font-family: Helvetica, sans-serif;
+  text-shadow: .1rem .1rem $color-shadow;
+}
+
+.formulario__select {
+  background-color: transparent;
+  color: $color-primario-suave;
+  border: none;
+}
+
+.formulario__select .formulario__opcion {
+  background-color: $color-fondo-dropdown;
+  color: $color-primario-suave;
+}
+
+option {
+  width: 5rem;
+  font-size: 1rem;
+}
+
+.formulario__boton {
+  margin-left: 3rem;
+  background-color: black;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 1.1rem;
+  color: white;
+  height: 1.8rem;
+  width: 4rem;
+  border: 1px solid yellow;
+  border-radius: .8rem;
+  box-shadow: 0 .2rem .3rem $color-boton-submit;
+  transition: all .02s;
+}
+
+.formulario__boton:hover {
+  transform: translateY(-.2rem);
+  box-shadow: 0 .4rem .5rem $color-boton-submit;
+  color: yellow;
+}
+
+.formulario__boton:active {
+  transform: translateY(-.1rem);
+  box-shadow: 0 .3rem .4rem $color-boton-submit;
+}

@@ -33,6 +33,7 @@ export function mostrarGeneros(generosArray) {
 export function mostrarPeliculas(peliculas, tipo) {
   const peliculasContainer = document.querySelector('.peliculas-container');
   peliculasContainer.innerHTML = '';
+  console.log(peliculas);
 
   peliculas.forEach((pelicula) => {
     let titulo;
