@@ -206,13 +206,24 @@ option {
   color: yellow; }
 
 .formulario__boton:active {
+  outline: none;
   transform: translateY(-0.1rem);
   box-shadow: 0 0.3rem 0.4rem rgba(242, 239, 53, 0.5); }
+
+.peliculas-nav {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffdc00;
+  text-align: center;
+  grid-row: 2 / 3;
+  grid-column: 1 / -1; }
+  .peliculas-nav__numero {
+    color: white; }
 
 .container {
   display: grid;
   margin: 0;
-  grid-template-rows: 4.5rem 40rem; }
+  grid-template-rows: 4.5rem 3rem 40rem; }
 
 .peliculas-container {
   width: 93vw;

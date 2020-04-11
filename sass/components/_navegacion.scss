@@ -76,6 +76,7 @@ option {
 }
 
 .formulario__boton:active {
+  outline: none;
   transform: translateY(-.1rem);
   box-shadow: 0 .3rem .4rem $color-boton-submit;
 }

@@ -2,7 +2,9 @@
   font-size: 2rem;
   font-weight: 700;
   color: $color-primario;
-  margin: 4rem 2rem;
+  text-align: center;
+  grid-row: 2 / 3;
+  grid-column: 1 / -1;
 
   &__numero {
     color: white;
