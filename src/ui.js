@@ -52,16 +52,6 @@ export function mostrarPeliculas(peliculas, tipo) {
     const puntaje = pelicula.vote_average;
     const resumen = pelicula.overview;
 
-/*     <div class="peliculas-box">
-    <h2 class="peliculas-box__titulo">Batman the dark Knight</h2>
-    <h3 class="peliculas-box__subtitulo">Subtitulo</h3>
-    <img src="./src/img/batman.jpg" alt="Poster" class="peliculas-box__imagen">
-    <p class="peliculas-box__puntaje">8</p>
-    <p class="peliculas-box__release"><span>Estreno: </span>23-02-1987</p>
-    <p class="peliculas-box__descripcion">Las fuerzas de Saruman han sido destruidas, y su fortaleza sitiada. Ha llegado el momento de que se decida el destino de la Tierra Media, y por primera vez en mucho tiempo, parece que hay una pequeña esperanza. La atención del señor oscuro Sauron se centra ahora en Gondor, el último reducto de los hombres, y del cual Aragorn tendrá que reclamar el trono para ocupar su puesto de Rey. Pero las fuerzas de Sauron ya se preparan para lanzar el último y definitivo ataque contra el reino de Gondor, la batalla que decidirá el destino de todos. Mientras tanto, Frodo y Sam continuan su camino hacia Mordor, a la espera de que Sauron no repare en que dos pequeños Hobbits se acercan cada día más al final de su camino, el Monte del Destino.</p>
-    <a href="#" class="peliculas-box__boton">Ver mas</a>
-  </div> */
-
     //Crea la parte del contenedor de la imagen de la CARD
     const peliculasBox = document.createElement('div');
     peliculasBox.classList.add('peliculas-box');
@@ -86,14 +76,12 @@ export function mostrarPeliculas(peliculas, tipo) {
     peliculaImagen.classList.add('peliculas-box__imagen');
     peliculasBox.appendChild(peliculaImagen);
 
-    if (idioma == 'en' || idioma == 'es') {
-      const peliculaRelease = document.createElement('p');
-      peliculaRelease.classList.add('peliculas-box__release');
-      peliculaRelease.textContent = release;
-      const peliculaReleaseSpan = document.createElement('span');
-      peliculaRelease.appendChild(peliculaReleaseSpan); 
-      peliculasBox.appendChild(peliculaRelease);
-    }
+    
+    const peliculaRelease = document.createElement('p');
+    peliculaRelease.classList.add('peliculas-box__release');
+    peliculaRelease.innerHTML =  `<span>Estreno: </span>${release}`;
+    peliculasBox.appendChild(peliculaRelease);
+    
     const peliculaDescripcion = document.createElement('p');
     peliculaDescripcion.setAttribute('id', 'pelicula-descripcion');
     peliculaDescripcion.classList.add('peliculas-box__descripcion');
@@ -173,14 +161,9 @@ export function mostrarInfoIngles(peliculas, tipo) {
     if (idioma != 'en' && idioma != 'es' && titulos[i].firstChild.textContent.toLowerCase() != titulo.toLowerCase()) {
         const tituloAlternativo = document.createElement('h4');
         tituloAlternativo.classList.add('card-title');
-        tituloAlternativo.setAttribute('id', 'card-titulo-alternativo');
+        tituloAlternativo.classList.add('peliculas-box__subtitulo');
         tituloAlternativo.textContent = titulo;
         titulos[i].appendChild(tituloAlternativo);
-        const fechaSalida = document.createElement('p');
-        fechaSalida.classList.add('card-text', 'release');
-        fechaSalida.setAttribute('id', 'release');
-        fechaSalida.textContent = `Estreno: ${release}`; 
-        tituloAlternativo.appendChild(fechaSalida);
     }
   }
 }
