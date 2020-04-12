@@ -39,6 +39,9 @@ body::-webkit-scrollbar-thumb {
 .invisible {
   display: none; }
 
+.flex {
+  display: flex; }
+
 .peliculas-box {
   max-height: 35rem;
   text-align: center;
@@ -198,36 +201,70 @@ option {
   border: 1px solid yellow;
   border-radius: .8rem;
   box-shadow: 0 0.2rem 0.3rem rgba(242, 239, 53, 0.5);
+  outline: none;
   transition: all .02s; }
 
 .formulario__boton:hover {
+  cursor: pointer;
   transform: translateY(-0.2rem);
   box-shadow: 0 0.4rem 0.5rem rgba(242, 239, 53, 0.5);
   color: yellow; }
 
 .formulario__boton:active {
-  outline: none;
   transform: translateY(-0.1rem);
   box-shadow: 0 0.3rem 0.4rem rgba(242, 239, 53, 0.5); }
 
 .peliculas-nav {
-  font-size: 2rem;
+  height: 3rem;
+  padding-top: .5rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  color: #ffdc00;
+  color: #818181;
   text-align: center;
+  margin: 1rem 0 1rem 0;
+  text-shadow: 0.1rem 0.1rem rgba(0, 0, 0, 0.4);
+  justify-content: center;
   grid-row: 2 / 3;
   grid-column: 1 / -1; }
   .peliculas-nav__numero {
-    color: white; }
+    display: inline-block;
+    color: white;
+    margin: 0 .5rem 0 .5rem;
+    transition: all .01s;
+    order: 2; }
+  .peliculas-nav__boton {
+    font-size: 1.5rem;
+    display: inline-block;
+    text-shadow: 0.1rem 0.1rem rgba(0, 0, 0, 0.4);
+    transition: all .05s; }
+  .peliculas-nav__boton:hover {
+    color: rgba(255, 220, 0, 0.8);
+    letter-spacing: .15rem;
+    cursor: pointer;
+    text-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.4);
+    transform: scale(1.05); }
+  .peliculas-nav__boton:active {
+    color: #ffdc00;
+    letter-spacing: 0;
+    cursor: pointer;
+    text-shadow: 0.07rem 0.07rem #ffdc00; }
+  .peliculas-nav__boton--1:active ~ .peliculas-nav__numero {
+    transform: scale(0.8) translateX(-0.3rem); }
+  .peliculas-nav__boton--2:active ~ .peliculas-nav__numero {
+    transform: scale(0.8) translateX(0.3rem); }
+  .peliculas-nav__boton--1 {
+    order: 1; }
+  .peliculas-nav__boton--2 {
+    order: 3; }
 
 .container {
   display: grid;
   margin: 0;
-  grid-template-rows: 4.5rem 3rem 40rem; }
+  grid-template-rows: 4.5rem 10rem 40rem; }
 
 .peliculas-container {
   width: 93vw;
-  margin: 7.5rem auto;
+  margin: 9.5rem auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 1.5rem;

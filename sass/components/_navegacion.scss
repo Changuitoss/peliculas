@@ -66,17 +66,18 @@ option {
   border: 1px solid yellow;
   border-radius: .8rem;
   box-shadow: 0 .2rem .3rem $color-boton-submit;
+  outline: none;
   transition: all .02s;
 }
 
 .formulario__boton:hover {
+  cursor: pointer;
   transform: translateY(-.2rem);
   box-shadow: 0 .4rem .5rem $color-boton-submit;
   color: yellow;
 }
 
 .formulario__boton:active {
-  outline: none;
   transform: translateY(-.1rem);
   box-shadow: 0 .3rem .4rem $color-boton-submit;
 }

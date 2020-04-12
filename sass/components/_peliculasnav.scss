@@ -1,12 +1,59 @@
 .peliculas-nav {
-  font-size: 2rem;
+  height: 3rem;
+  padding-top: .5rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  color: $color-primario;
+  color: rgb(129, 129, 129);
   text-align: center;
+  margin: 1rem 0 1rem 0;
+  text-shadow: .1rem .1rem $color-shadow;
+  justify-content: center;
   grid-row: 2 / 3;
   grid-column: 1 / -1;
 
   &__numero {
+    display: inline-block;
     color: white;
+    margin: 0 .5rem 0 .5rem;
+    transition: all .01s;
+    order: 2;
+  }
+
+  &__boton {
+    font-size: 1.5rem;
+    display: inline-block;
+    text-shadow: .1rem .1rem $color-shadow;
+    transition: all .05s;
+  }
+
+  &__boton:hover {
+    color: $color-primario-suave;
+    letter-spacing: .15rem;
+    cursor: pointer;
+    text-shadow: .1rem .1rem .1rem $color-shadow;
+    transform: scale(1.05);
+  }
+
+  &__boton:active {
+    color: $color-primario;
+    letter-spacing: 0;
+    cursor: pointer;
+    text-shadow: .07rem .07rem $color-primario;
+  }
+
+  &__boton--1:active ~ &__numero {
+    transform: scale(.8) translateX(-.3rem);
+  }
+
+  &__boton--2:active ~ &__numero {
+    transform: scale(.8) translateX(.3rem);
+  }
+
+  &__boton--1 {
+    order: 1;
+  }
+
+  &__boton--2 {
+    order: 3;
   }
 }

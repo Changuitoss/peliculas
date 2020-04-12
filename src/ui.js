@@ -93,7 +93,7 @@ export function mostrarPeliculas(peliculas, tipo) {
 
 export function mostrarNavegacionPaginas(url, pagina, paginasTotales, tipo) {
   const peliculasNav = document.querySelectorAll('.peliculas-nav');
-  const peliculasNavNumero = document.querySelectorAll('.peliculas-nav-numero');
+  const peliculasNavNumero = document.querySelectorAll('.peliculas-nav__numero');
   peliculasNavNumero.forEach((nav) => {
     nav.textContent = pagina;
   });

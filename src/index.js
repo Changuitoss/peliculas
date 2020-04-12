@@ -14,6 +14,7 @@ function configurarPagina() {
 
     peliculasNav.forEach((nav) => {
       nav.classList.remove('invisible');
+      nav.classList.add('flex');
     })
     obtenerPeliculas(e).then(obtenerInfoIngles(e))
   })
