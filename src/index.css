@@ -1,3 +1,10 @@
+/*
+0-600px:    phone
+600-900px:  tab-port
+900-1200px: tab-land
+1200-1400:  desktop-small
+1800 +:     desktop-big
+*/
 /* $color-background-1: rgba(164,57,49, .5); //con el color 2 primero al 80% y dsp al 100%
 $color-background-2: rgba(29,67,80, .2); */
 /* $color-background-1: rgba(216, 94, 153, 0.5);
@@ -169,6 +176,9 @@ body::-webkit-scrollbar-thumb {
     text-align: left;
     grid-row: 1 / 2;
     grid-column: 2 / 3; }
+    @media (max-width: 87.5em) {
+      .navegacion__formulario {
+        margin-left: 0rem; } }
 
 .formulario__label {
   margin-left: 2rem;
@@ -176,6 +186,9 @@ body::-webkit-scrollbar-thumb {
   font-size: 1rem;
   font-family: Helvetica, sans-serif;
   text-shadow: 0.1rem 0.1rem rgba(0, 0, 0, 0.4); }
+  @media (max-width: 87.5em) {
+    .formulario__label {
+      margin-left: 1rem; } }
 
 .formulario__select {
   background-color: transparent;
@@ -190,6 +203,9 @@ body::-webkit-scrollbar-thumb {
 option {
   width: 5rem;
   font-size: 1rem; }
+  @media (max-width: 87.5em) {
+    option {
+      width: 3rem; } }
 
 .formulario__boton {
   margin-left: 3rem;
