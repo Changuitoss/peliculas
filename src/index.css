@@ -180,7 +180,8 @@ body::-webkit-scrollbar-thumb {
 .formulario__select {
   background-color: transparent;
   color: rgba(255, 220, 0, 0.8);
-  border: none; }
+  border: none;
+  outline: none; }
 
 .formulario__select .formulario__opcion {
   background-color: #181818;
