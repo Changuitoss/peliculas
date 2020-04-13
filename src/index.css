@@ -1,8 +1,8 @@
 /*
 0-600px:    phone
 600-900px:  tab-port
-900-1200px: tab-land
-1200-1400:  desktop-small
+900-1100px: tab-land
+1100-1400:  desktop-small
 1800 +:     desktop-big
 */
 /* $color-background-1: rgba(164,57,49, .5); //con el color 2 primero al 80% y dsp al 100%
@@ -162,31 +162,38 @@ body::-webkit-scrollbar-thumb {
   grid-row: 1 / 2;
   grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: 1fr 4fr; }
+  grid-template-columns: 1.5fr 5fr; }
+  @media (max-width: 68.75em) {
+    .navegacion {
+      grid-template-columns: 1.2fr 4fr; } }
   .navegacion__titulo {
     font-family: 'Permanent Marker', cursive, -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
     font-size: 2.5rem;
     margin-top: .3rem;
+    margin-left: 2rem;
     color: #ffdc00;
     text-shadow: .1rem .2rem .2rem black;
     grid-column: 1 / 2; }
+    @media (max-width: 68.75em) {
+      .navegacion__titulo {
+        font-size: 2rem;
+        margin-top: .5rem; } }
   .navegacion__formulario {
     margin-left: .7rem;
     padding-top: 1.2rem;
     text-align: left;
     grid-row: 1 / 2;
     grid-column: 2 / 3; }
-    @media (max-width: 87.5em) {
-      .navegacion__formulario {
-        margin-left: 0rem; } }
 
 .formulario__label {
+  width: 6rem;
+  display: inline-block;
   margin-left: 2rem;
   font-weight: 600;
   font-size: 1rem;
   font-family: Helvetica, sans-serif;
   text-shadow: 0.1rem 0.1rem rgba(0, 0, 0, 0.4); }
-  @media (max-width: 87.5em) {
+  @media (max-width: 68.75em) {
     .formulario__label {
       margin-left: 1rem; } }
 
@@ -203,9 +210,6 @@ body::-webkit-scrollbar-thumb {
 option {
   width: 5rem;
   font-size: 1rem; }
-  @media (max-width: 87.5em) {
-    option {
-      width: 3rem; } }
 
 .formulario__boton {
   margin-left: 3rem;
@@ -215,11 +219,16 @@ option {
   color: white;
   height: 1.8rem;
   width: 4rem;
+  vertical-align: top;
   border: 1px solid yellow;
   border-radius: .8rem;
   box-shadow: 0 0.2rem 0.3rem rgba(242, 239, 53, 0.5);
   outline: none;
   transition: all .02s; }
+  @media (max-width: 68.75em) {
+    .formulario__boton {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem; } }
 
 .formulario__boton:hover {
   cursor: pointer;

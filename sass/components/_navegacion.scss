@@ -10,15 +10,26 @@
   grid-row: 1 / 2;
   grid-column:  1 / -1;
   display: grid; 
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 1.5fr 5fr;
+
+  @include respond(tab-land) {
+    grid-template-columns: 1.2fr 4fr;
+  }
+
 
   &__titulo {
     font-family: 'Permanent Marker', cursive, -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;;
     font-size: 2.5rem;
     margin-top: .3rem;
+    margin-left: 2rem;
     color: $color-primario;
     text-shadow: .1rem .2rem .2rem black;
     grid-column: 1 / 2;
+
+    @include respond(tab-land) {
+      font-size: 2rem;
+      margin-top: .5rem;
+    }
   }
 
   &__formulario {
@@ -27,21 +38,19 @@
     text-align: left;
     grid-row: 1 / 2;
     grid-column: 2 / 3;
-
-    @include respond(desktop-small) {
-      margin-left: 0rem;
-    }
   }
  }
 
 .formulario__label {
+  width: 6rem;
+  display: inline-block;
   margin-left: 2rem;
   font-weight: 600;
   font-size: 1rem;
   font-family: Helvetica, sans-serif;
   text-shadow: .1rem .1rem $color-shadow;
 
-  @include respond(desktop-small) {
+  @include respond(tab-land) {
     margin-left: 1rem;
   }
 }
@@ -61,10 +70,6 @@
 option {
   width: 5rem;
   font-size: 1rem;
-
-  @include respond(desktop-small) {
-    width: 3rem;
-  }
 }
 
 .formulario__boton {
@@ -75,11 +80,17 @@ option {
   color: white;
   height: 1.8rem;
   width: 4rem;
+  vertical-align: top;
   border: 1px solid yellow;
   border-radius: .8rem;
   box-shadow: 0 .2rem .3rem $color-boton-submit;
   outline: none;
   transition: all .02s;
+
+  @include respond(tab-land) {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
 }
 
 .formulario__boton:hover {

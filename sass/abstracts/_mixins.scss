@@ -2,8 +2,8 @@
 /*
 0-600px:    phone
 600-900px:  tab-port
-900-1200px: tab-land
-1200-1400:  desktop-small
+900-1100px: tab-land
+1100-1400:  desktop-small
 1800 +:     desktop-big
 */
 
@@ -15,7 +15,7 @@
     @media (max-width: 56.25em) { @content};
   }
   @if $breakpoint == tab-land {
-    @media (max-width: 75em) { @content};
+    @media (max-width: 68.75em) { @content};
   }
   @if $breakpoint == desktop-small {
     @media (max-width: 87.5em) { @content};

@@ -14,28 +14,40 @@
           
         <h1 id="titulo" class="navegacion__titulo">Que ver?!?</h1>
         
-        <form class='navegacion__formulario'>  
-          <label for="tipo" class="formulario__label">Tipo: </label>
-          <select id="tipo" class="formulario__select">
-            <option value="movie" class="formulario__opcion">Peliculas</option>
-            <option value="tv" class="formulario__opcion">Series</option>
-          </select>
-          <label for="genero" class="formulario__label">Genero: 
-            <select id="genero" class="seleccion formulario__select"></select>
-          </label>
-          <label for="anodesde" class="formulario__label">Desde? 
-            <select id="anodesde" class="seleccion formulario__select"></select>
-          </label>
-          <label for="anohasta" class="formulario__label">Hasta? 
-            <select id="anohasta" class="seleccion hasta formulario__select"></select>
-          </label>
-          <label for="popularidad" class="formulario__label">Popularidad:
-            <select id="popularidad" class="seleccion formulario__select">
-              <option value="alta" class="formulario__opcion">Alta</option>
-              <option value="baja" class="formulario__opcion">Baja</option>
+        <form class='navegacion__formulario'>
+
+          <div class="formulario__label">
+            <label for="tipo" class="formulario__label--tipo">Tipo: </label>
+            <select id="tipo" class="formulario__select">
+              <option value="movie" class="formulario__opcion">Peliculas</option>
+              <option value="tv" class="formulario__opcion">Series</option>
             </select>
-          </label>
-          <button type="submit" class="submit formulario__boton">VER!</button>
+          </div> 
+          <div class="formulario__label">
+            <label for="genero" class="formulario__label--genero">Genero: 
+              <select id="genero" class="seleccion formulario__select"></select>
+            </label>
+          </div>
+          <div class="formulario__label">
+            <label for="anodesde" class="formulario__label--desde">Desde? 
+              <select id="anodesde" class="seleccion formulario__select"></select>
+            </label>
+          </div>
+          <div class="formulario__label">
+            <label for="anohasta" class="formulario__label--hasta">Hasta? 
+              <select id="anohasta" class="seleccion hasta formulario__select"></select>
+            </label>
+          </div>
+          <div class="formulario__label">
+            <label for="popularidad" class="formulario__label--popularidad">Popularidad:
+              <select id="popularidad" class="seleccion formulario__select">
+                <option value="alta" class="formulario__opcion">Alta</option>
+                <option value="baja" class="formulario__opcion">Baja</option>
+              </select>
+            </label>
+          </div>
+
+            <button type="submit" class="submit formulario__boton">VER!</button>
         </form>
       </div>
 
