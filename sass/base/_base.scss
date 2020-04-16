@@ -16,6 +16,10 @@ body {
 
 body::-webkit-scrollbar {
   width: .5rem;               /* width of the entire scrollbar */
+
+  @include respond(tab-port) {
+    width: .2rem;
+  }
 }
 body::-webkit-scrollbar-track {
   background: transparent;        /* color of the tracking area */

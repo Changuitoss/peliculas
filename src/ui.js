@@ -169,3 +169,32 @@ export function mostrarInfoIngles(peliculas, tipo) {
   }
 }
 
+function popUp(e) {
+  const botonBusqueda = document.querySelector('.pop__checkbox');
+  const formulario = document.querySelector('.navegacion__formulario');
+  if (!botonBusqueda.checked) {
+    console.log('checked? ', botonBusqueda.checked)
+    formulario.style.display = "block";
+  }else {
+    formulario.style.display = "none";
+  }  
+}
+
+const popButton = document.querySelector('.pop__button');
+popButton.addEventListener('click', popUp)
+
+/* matchMedia('(max-width: 900px)').addEventListener('change', moverFormulario);
+
+function moverFormulario(e) {
+  console.log(e)
+  const navegacion = document.querySelector('.navegacion');
+  const formulario = document.querySelector('.navegacion__formulario');
+  const pop = document.querySelector('.pop');
+
+  if (e.matches) {
+    pop.appendChild(formulario);
+  } else {
+    navegacion.appendChild(formulario);
+  }
+} */ 
+

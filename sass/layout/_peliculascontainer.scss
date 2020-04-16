@@ -2,7 +2,7 @@
   width: 93vw;
   margin: 9.5rem auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   column-gap: 1.5rem;
   row-gap: .01rem;
 }

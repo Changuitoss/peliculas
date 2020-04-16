@@ -7,11 +7,12 @@
 @import "base/typography";
 @import "base/utilities";
 
-@import "components/peliculasbox";
 @import "components/navegacion";
+@import "components/peliculasbox";
 @import "components/peliculasnav";
 
 @import "layout/container";
 @import "layout/peliculascontainer";
+@import "layout/pop";
 
 @import "pages/home";

@@ -3,6 +3,8 @@ import { obtenerGeneros, obtenerPeliculas, obtenerInfoIngles } from './api.js';
 
 function configurarPagina() {
   const form = document.querySelector('form');
+  const formPop = document.querySelector('.navegacion__formulario');
+  const botonBusqueda = document.querySelector('.pop__checkbox');
   const anoDesde = document.querySelector('#anodesde');
   const anoHasta = document.querySelector('#anohasta');
   mostrarAnos(anoDesde);
@@ -11,6 +13,10 @@ function configurarPagina() {
   
   form.addEventListener('submit', (e) => {
     const peliculasNav = document.querySelectorAll('.peliculas-nav');
+    formPop.style.display = 'none';
+    if (botonBusqueda.checked) {
+      botonBusqueda.checked = false;
+    }
 
     peliculasNav.forEach((nav) => {
       nav.classList.remove('invisible');
