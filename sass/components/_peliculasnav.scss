@@ -11,6 +11,10 @@
   grid-row: 2 / 3;
   grid-column: 1 / -1;
 
+  @include respond(phone) {
+    margin: .5rem 0 0 0;
+  }
+
   &__numero {
     display: inline-block;
     color: white;

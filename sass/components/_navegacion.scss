@@ -38,6 +38,12 @@
       letter-spacing: .3rem;
       text-align: center;
     }
+
+    @include respond(phone) {
+      letter-spacing: .2rem;
+      padding-left: 1.5rem;
+      margin-top: .7rem;
+    }
   }
 
   &__formulario {
@@ -52,6 +58,10 @@
       position: fixed;
       top: 5rem;
       left: 3rem;
+    }
+
+    @include respond(phone) {
+      left: .7rem;
     }
   }
  }

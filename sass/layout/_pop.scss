@@ -25,6 +25,10 @@
     @include respond(tab-port) {
       display: inline-block;
     }
+
+    @include respond(phone) {
+      left: 2rem;
+    }
   }
 
   &__button:hover {
@@ -43,6 +47,10 @@
     position: fixed;
     top: 1.4rem;
     left: 3.9rem;
+
+    @include respond(phone) {
+      left: 2.9rem;
+    }
   }
 
   &__background {

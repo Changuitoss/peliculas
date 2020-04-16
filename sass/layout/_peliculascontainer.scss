@@ -4,5 +4,9 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   column-gap: 1.5rem;
-  row-gap: .01rem;
+  row-gap: 2rem;
+
+  @include respond(phone) {
+    margin: 8.5rem auto;
+  }
 }
