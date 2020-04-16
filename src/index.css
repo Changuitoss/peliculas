@@ -122,7 +122,11 @@ body::-webkit-scrollbar-thumb {
   @media (max-width: 56.25em) {
     .formulario__label {
       display: block;
-      margin-bottom: 1.2rem; } }
+      margin-bottom: 1.2rem;
+      width: 11rem; } }
+  @media (max-width: 37.5em) {
+    .formulario__label {
+      width: 11rem; } }
 
 .formulario__select {
   background-color: transparent;
@@ -323,7 +327,8 @@ option {
   grid-column: 1 / -1; }
   @media (max-width: 37.5em) {
     .peliculas-nav {
-      margin: .5rem 0 0 0; } }
+      margin: .5rem 0 0 0;
+      font-size: 1.2rem; } }
   .peliculas-nav__numero {
     display: inline-block;
     color: white;
@@ -335,6 +340,11 @@ option {
     display: inline-block;
     text-shadow: 0.1rem 0.1rem rgba(0, 0, 0, 0.4);
     transition: all .05s; }
+    @media (max-width: 37.5em) {
+      .peliculas-nav__boton {
+        margin: .5rem 0 0 0;
+        font-size: 1.2rem;
+        margin-top: 0; } }
   .peliculas-nav__boton:hover {
     color: rgba(255, 220, 0, 0.8);
     letter-spacing: .15rem;
@@ -369,7 +379,7 @@ option {
   row-gap: 2rem; }
   @media (max-width: 37.5em) {
     .peliculas-container {
-      margin: 8.5rem auto; } }
+      margin: 8rem auto; } }
 
 .pop {
   /*   &__nav {
@@ -440,7 +450,10 @@ option {
     top: .5rem;
     left: .5rem;
     background-image: linear-gradient(to bottom right, black 50%, rgba(0, 0, 0, 0.7) 70%, rgba(255, 220, 0, 0.2));
-    transition: transform .8s; }
+    transition: transform .2s; }
+    @media (max-width: 37.5em) {
+      .pop__background {
+        left: 2.9rem; } }
   .pop__checkbox:checked ~ .pop__background {
     transform: scale(25); }
   .pop__checkbox:checked .peliculas-container {

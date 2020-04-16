@@ -82,6 +82,11 @@
   @include respond(tab-port) {
     display: block;
     margin-bottom: 1.2rem;
+    width: 11rem;
+  }
+
+  @include respond(phone) {
+    width: 11rem;
   }
 }
 

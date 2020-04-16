@@ -61,7 +61,11 @@
     top: .5rem;
     left: .5rem;
     background-image: linear-gradient(to bottom right, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, .7) 70%, rgba($color-primario-suave,.2)) ;
-    transition: transform .8s;
+    transition: transform .2s;
+
+    @include respond(phone) {
+      left: 2.9rem;
+    }
   }
 
 /*   &__nav {

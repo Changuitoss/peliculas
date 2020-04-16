@@ -173,8 +173,8 @@ function popUp(e) {
   const botonBusqueda = document.querySelector('.pop__checkbox');
   const formulario = document.querySelector('.navegacion__formulario');
   if (!botonBusqueda.checked) {
-    console.log('checked? ', botonBusqueda.checked)
-    formulario.style.display = "block";
+    setTimeout(() => formulario.style.display = "block", 200);
+    
   }else {
     formulario.style.display = "none";
   }  
