@@ -31,9 +31,9 @@ export function mostrarGeneros(generosArray) {
 }
 
 export function mostrarPeliculas(peliculas, tipo) {
+  console.log('3')
   const peliculasContainer = document.querySelector('.peliculas-container');
   peliculasContainer.innerHTML = '';
-  console.log(peliculas);
 
   peliculas.forEach((pelicula) => {
     let titulo;
@@ -92,6 +92,7 @@ export function mostrarPeliculas(peliculas, tipo) {
 }
 
 export function mostrarNavegacionPaginas(url, pagina, paginasTotales, tipo) {
+  console.log('4')
   const peliculasNav = document.querySelectorAll('.peliculas-nav');
   const peliculasNavNumero = document.querySelectorAll('.peliculas-nav__numero');
   peliculasNavNumero.forEach((nav) => {
@@ -111,7 +112,8 @@ export function mostrarNavegacionPaginas(url, pagina, paginasTotales, tipo) {
         });
         urlNueva = url.replace('&page=1', '') + '&page=' + (pagina);
         urlNuevaIngles = urlNueva.replace('language=es', '') + '&language=en';
-        obtenerInfoPagina(e, urlNueva, tipo).then(obtenerInfoPaginaIngles(urlNuevaIngles, tipo));
+        Promise.all([obtenerInfoPagina(e, urlNueva, tipo)])
+        .then(() => obtenerInfoPaginaIngles(urlNuevaIngles, tipo));
 
       } 
       else if (boton == 'anterior') {
@@ -121,7 +123,8 @@ export function mostrarNavegacionPaginas(url, pagina, paginasTotales, tipo) {
         });
         urlNueva = url.replace('&page=2', '') + '&page=' + (pagina);
         urlNuevaIngles = urlNueva.replace('&language=es', '') + '&language=en';
-        obtenerInfoPagina(e, urlNueva, tipo).then(obtenerInfoPaginaIngles(urlNuevaIngles, tipo));
+        Promise.all([obtenerInfoPagina(e, urlNueva, tipo)])
+        .then(() => obtenerInfoPaginaIngles(urlNuevaIngles, tipo));
 
       }
     });
@@ -130,6 +133,7 @@ export function mostrarNavegacionPaginas(url, pagina, paginasTotales, tipo) {
 }
 
 export function mostrarInfoIngles(peliculas, tipo) {
+  console.log('9')
   const peliculasBox = Array.from(document.querySelectorAll('.peliculas-box'));
   //imagenBox.innerHTML = '';
   const titulos = document.querySelectorAll('.peliculas-box__titulo');

@@ -34,8 +34,11 @@ export function obtenerPeliculas(e) {
                   : url = `https://api.themoviedb.org/3/discover/${tipo}?api_key=e4c325cfe50ba68791f7165086f631e4&language=es&sort_by=vote_average.desc&page=1&with_genres=${genero}&first_air_date.gte=${desdeAno}-01-01&first_air_date.lte=${hastaAno}-12-12&vote_count.gte=100&vote_count.lte=${$votosDesde}&include_image_language=en`
 
   return fetch(url)
-    .then((r) => r.json())
+    .then((r) => {
+      console.log('1')
+      return r.json()})
     .then((resultadoPeliculas) => {
+      console.log('2')
       const { page: pagina, total_pages: paginasTotales, results: resultados} = resultadoPeliculas;
       mostrarPeliculas(resultados, tipo);
       mostrarNavegacionPaginas(url, pagina, paginasTotales, tipo);
@@ -43,6 +46,7 @@ export function obtenerPeliculas(e) {
 }
 
 export function obtenerInfoIngles(e) {
+  console.log('5')
   e.preventDefault()
   const tipo = e.target.tipo.value;
   const genero = e.target.genero.value;
@@ -65,9 +69,15 @@ export function obtenerInfoIngles(e) {
                   : url = `https://api.themoviedb.org/3/discover/${tipo}?api_key=e4c325cfe50ba68791f7165086f631e4&language=en&sort_by=vote_average.desc&page=1&with_genres=${genero}&first_air_date.gte=${desdeAno}-01-01&first_air_date.lte=${hastaAno}-12-12&vote_count.gte=100&vote_count.lte=${$votosDesde}&include_image_language=en`
 
   return fetch(url)
-    .then((r) => r.json())
-    .then((resultadoPeliculas) => resultadoPeliculas.results)
-    .then((results) => mostrarInfoIngles(results, tipo))
+    .then((r) => {
+      console.log('6')
+      return r.json()})
+    .then((resultadoPeliculas) => {
+      console.log('7')
+      return resultadoPeliculas.results})
+    .then((results) => {
+      console.log('8')
+      return mostrarInfoIngles(results, tipo)})
 }
 
 export function obtenerInfoPaginaIngles(url, tipo) {
@@ -77,7 +87,6 @@ export function obtenerInfoPaginaIngles(url, tipo) {
 }
 
 export function obtenerInfoPagina(e, url, tipo) {
-  console.log('url obtenerInfoPagina: ', url)
   return fetch(url)
   .then((r) => r.json())
   .then((resultadoPeliculas) => {

@@ -22,7 +22,9 @@ function configurarPagina() {
       nav.classList.remove('invisible');
       nav.classList.add('flex');
     })
-    obtenerPeliculas(e).then(obtenerInfoIngles(e))
+
+    Promise.all([obtenerPeliculas(e)])
+    .then(() => obtenerInfoIngles(e))
   })
 }
 
