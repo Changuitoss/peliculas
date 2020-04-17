@@ -35,10 +35,8 @@ export function obtenerPeliculas(e) {
 
   return fetch(url)
     .then((r) => {
-      console.log('1')
       return r.json()})
     .then((resultadoPeliculas) => {
-      console.log('2')
       const { page: pagina, total_pages: paginasTotales, results: resultados} = resultadoPeliculas;
       mostrarPeliculas(resultados, tipo);
       mostrarNavegacionPaginas(url, pagina, paginasTotales, tipo);
@@ -46,7 +44,6 @@ export function obtenerPeliculas(e) {
 }
 
 export function obtenerInfoIngles(e) {
-  console.log('5')
   e.preventDefault()
   const tipo = e.target.tipo.value;
   const genero = e.target.genero.value;
@@ -70,13 +67,10 @@ export function obtenerInfoIngles(e) {
 
   return fetch(url)
     .then((r) => {
-      console.log('6')
       return r.json()})
     .then((resultadoPeliculas) => {
-      console.log('7')
       return resultadoPeliculas.results})
     .then((results) => {
-      console.log('8')
       return mostrarInfoIngles(results, tipo)})
 }
 

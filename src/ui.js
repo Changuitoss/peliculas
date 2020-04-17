@@ -31,7 +31,6 @@ export function mostrarGeneros(generosArray) {
 }
 
 export function mostrarPeliculas(peliculas, tipo) {
-  console.log('3')
   const peliculasContainer = document.querySelector('.peliculas-container');
   peliculasContainer.innerHTML = '';
 
@@ -92,7 +91,6 @@ export function mostrarPeliculas(peliculas, tipo) {
 }
 
 export function mostrarNavegacionPaginas(url, pagina, paginasTotales, tipo) {
-  console.log('4')
   const peliculasNav = document.querySelectorAll('.peliculas-nav');
   const peliculasNavNumero = document.querySelectorAll('.peliculas-nav__numero');
   peliculasNavNumero.forEach((nav) => {
@@ -104,7 +102,6 @@ export function mostrarNavegacionPaginas(url, pagina, paginasTotales, tipo) {
     let urlNuevaIngles;
     nav.addEventListener('click', (e) => {
       const boton = e.target.dataset.boton;
-      console.log('pagina: ', pagina)
       
       if (boton == 'proxima' && pagina < paginasTotales) {
         pagina += 1;
@@ -134,9 +131,7 @@ export function mostrarNavegacionPaginas(url, pagina, paginasTotales, tipo) {
 }
 
 export function mostrarInfoIngles(peliculas, tipo) {
-  console.log('9')
   const peliculasBox = Array.from(document.querySelectorAll('.peliculas-box'));
-  //imagenBox.innerHTML = '';
   const titulos = document.querySelectorAll('.peliculas-box__titulo');
 
   for (var i = 0; i < peliculas.length; i += 1) {
@@ -157,7 +152,6 @@ export function mostrarInfoIngles(peliculas, tipo) {
     }
 
     //Crea la parte de la imagen de la CARD, con el poster en ingles (viene de otro fetch)
-    //console.log('imagenbox: ', imagenBox[i]);
     const imagen = document.createElement('img');
     imagen.classList.add('peliculas-box__imagen');
     imagen.setAttribute('src', `https://image.tmdb.org/t/p/w500${tapa}`)
@@ -188,18 +182,14 @@ function popUp(e) {
 const popButton = document.querySelector('.pop__button');
 popButton.addEventListener('click', popUp)
 
-/* matchMedia('(max-width: 900px)').addEventListener('change', moverFormulario);
+matchMedia('(max-width: 900px)').addEventListener('change', moverFormulario);
 
 function moverFormulario(e) {
   console.log(e)
-  const navegacion = document.querySelector('.navegacion');
   const formulario = document.querySelector('.navegacion__formulario');
-  const pop = document.querySelector('.pop');
-
-  if (e.matches) {
-    pop.appendChild(formulario);
-  } else {
-    navegacion.appendChild(formulario);
-  }
-} */ 
+  
+  if (!e.matches) {
+    formulario.style.display = 'inline-block';
+  } 
+} 
 

@@ -14,7 +14,6 @@ function configurarPagina() {
   form.addEventListener('submit', (e) => {
     const peliculasNav = document.querySelectorAll('.peliculas-nav');
     if (matchMedia('(max-width: 900px)').matches) {
-      console.log('chica')
       formPop.style.display = 'none';
     }
     
