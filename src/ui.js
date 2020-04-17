@@ -104,6 +104,7 @@ export function mostrarNavegacionPaginas(url, pagina, paginasTotales, tipo) {
     let urlNuevaIngles;
     nav.addEventListener('click', (e) => {
       const boton = e.target.dataset.boton;
+      console.log('pagina: ', pagina)
       
       if (boton == 'proxima' && pagina < paginasTotales) {
         pagina += 1;
@@ -116,7 +117,7 @@ export function mostrarNavegacionPaginas(url, pagina, paginasTotales, tipo) {
         .then(() => obtenerInfoPaginaIngles(urlNuevaIngles, tipo));
 
       } 
-      else if (boton == 'anterior') {
+      else if (boton == 'anterior' && pagina > 1) {
         pagina -= 1;
         peliculasNavNumero.forEach((nav) => {
           nav.textContent = pagina;
