@@ -3,10 +3,12 @@
   margin: 9.5rem auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-auto-rows: minmax(500px, 1fr);
   column-gap: 1.5rem;
   row-gap: 2rem;
 
   @include respond(phone) {
     margin: 8rem auto;
+    grid-auto-rows: auto;
   }
 }
