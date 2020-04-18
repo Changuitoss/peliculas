@@ -182,7 +182,7 @@ function popUp(e) {
 const popButton = document.querySelector('.pop__button');
 popButton.addEventListener('click', popUp)
 
-matchMedia('(max-width: 900px)').addEventListener('change', moverFormulario);
+/* matchMedia('(max-width: 900px)').addEventListener('change', moverFormulario);
 
 function moverFormulario(e) {
   console.log(e)
@@ -191,5 +191,5 @@ function moverFormulario(e) {
   if (!e.matches) {
     formulario.style.display = 'inline-block';
   } 
-} 
+}  */
 

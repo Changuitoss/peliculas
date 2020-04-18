@@ -123,10 +123,10 @@ body::-webkit-scrollbar-thumb {
     .formulario__label {
       display: block;
       margin-bottom: 1.2rem;
-      width: 11rem; } }
+      width: 14rem; } }
   @media (max-width: 37.5em) {
     .formulario__label {
-      width: 11rem; } }
+      width: 14rem; } }
 
 .formulario__select {
   background-color: transparent;
