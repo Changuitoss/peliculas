@@ -422,7 +422,7 @@ option {
     top: .5rem;
     left: 3rem;
     z-index: 10;
-    transition: all .02s; }
+    transition: all .1s; }
     @media (max-width: 56.25em) {
       .pop__button {
         display: inline-block; } }
