@@ -93,7 +93,7 @@ body::-webkit-scrollbar-thumb {
         margin-top: .7rem; } }
   .navegacion__formulario {
     margin-left: .7rem;
-    padding-top: 1.2rem;
+    padding-top: .6rem;
     text-align: left;
     grid-row: 1 / 2;
     grid-column: 2 / 3; }
@@ -144,7 +144,7 @@ option {
   font-size: 1rem; }
 
 .formulario__boton {
-  margin-left: 5rem;
+  margin: .6rem 0 0 4rem;
   background-color: black;
   font-family: 'Permanent Marker', cursive;
   font-size: 1.1rem;
