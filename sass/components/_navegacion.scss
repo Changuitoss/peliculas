@@ -40,8 +40,7 @@
     }
 
     @include respond(phone) {
-      letter-spacing: .2rem;
-      padding-left: 1.5rem;
+      letter-spacing: 0;
       margin-top: .7rem;
     }
   }
@@ -71,8 +70,7 @@
   display: inline-block;
   margin-left: 2rem;
   font-weight: 600;
-  font-size: 1rem;
-  font-family: Helvetica, sans-serif;
+  font-size: 1.1rem;
   text-shadow: .1rem .1rem $color-shadow;
 
   @include respond(tab-land) {
@@ -112,7 +110,7 @@ option {
 }
 
 .formulario__boton {
-  margin-left: 3rem;
+  margin-left: 5rem;
   background-color: black;
   font-family: 'Permanent Marker', cursive;
   font-size: 1.1rem;
@@ -132,14 +130,14 @@ option {
   }
 }
 
-.formulario__button:hover {
+.formulario__boton:hover {
   cursor: pointer;
   transform: translateY(-.2rem);
   box-shadow: 0 .4rem .5rem $color-boton-submit;
   color: yellow;
 }
 
-.formulario__button:active {
+.formulario__boton:active {
   transform: translateY(-.1rem);
   box-shadow: 0 .3rem .4rem $color-boton-submit;
 }

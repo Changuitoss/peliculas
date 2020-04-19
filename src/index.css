@@ -89,8 +89,7 @@ body::-webkit-scrollbar-thumb {
         text-align: center; } }
     @media (max-width: 37.5em) {
       .navegacion__titulo {
-        letter-spacing: .2rem;
-        padding-left: 1.5rem;
+        letter-spacing: 0;
         margin-top: .7rem; } }
   .navegacion__formulario {
     margin-left: .7rem;
@@ -113,8 +112,7 @@ body::-webkit-scrollbar-thumb {
   display: inline-block;
   margin-left: 2rem;
   font-weight: 600;
-  font-size: 1rem;
-  font-family: Helvetica, sans-serif;
+  font-size: 1.1rem;
   text-shadow: 0.1rem 0.1rem rgba(0, 0, 0, 0.4); }
   @media (max-width: 68.75em) {
     .formulario__label {
@@ -146,7 +144,7 @@ option {
   font-size: 1rem; }
 
 .formulario__boton {
-  margin-left: 3rem;
+  margin-left: 5rem;
   background-color: black;
   font-family: 'Permanent Marker', cursive;
   font-size: 1.1rem;
@@ -164,13 +162,13 @@ option {
       margin-left: 1.5rem;
       margin-bottom: 1rem; } }
 
-.formulario__button:hover {
+.formulario__boton:hover {
   cursor: pointer;
   transform: translateY(-0.2rem);
   box-shadow: 0 0.4rem 0.5rem rgba(242, 239, 53, 0.5);
   color: yellow; }
 
-.formulario__button:active {
+.formulario__boton:active {
   transform: translateY(-0.1rem);
   box-shadow: 0 0.3rem 0.4rem rgba(242, 239, 53, 0.5); }
 
@@ -192,7 +190,8 @@ option {
       grid-template-rows: 78px 50px 360px 195px 70px;
       grid-template-columns: 1fr; } }
   .peliculas-box__titulo {
-    height: 75px;
+    height: 70px;
+    margin-top: .7rem;
     font-weight: 200;
     font-family: 'Permanent Marker', cursive;
     font-size: 1.2rem;
@@ -208,7 +207,7 @@ option {
   .peliculas-box__subtitulo {
     margin-bottom: 0;
     font-weight: 200;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     grid-row: 1 / 2;
     grid-column: 1 / 4; }
     @media (max-width: 37.5em) {
@@ -223,6 +222,9 @@ option {
     grid-row: 2 / 4;
     grid-column: 1 / 3;
     transition: all .2s; }
+    @media (max-width: 68.75em) {
+      .peliculas-box__imagen {
+        width: 70%; } }
     @media (max-width: 37.5em) {
       .peliculas-box__imagen {
         width: auto;
@@ -233,9 +235,11 @@ option {
       transform: scale(1.5);
       box-shadow: 0 1.3rem 1.3rem black; }
   .peliculas-box__descripcion {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
     max-height: 23.5rem;
-    padding-left: .5rem;
-    margin: .5rem .7rem;
+    padding: .4rem .7rem;
+    margin: .5rem .4rem;
     text-align: left;
     font-size: 1.2rem;
     font-weight: 100;
@@ -267,7 +271,7 @@ option {
     line-height: 2.1rem;
     width: 2.5rem;
     height: 2.5rem;
-    margin: .5rem auto .5rem auto;
+    margin: 1.1rem 4rem 0.5rem auto;
     color: #ffdc00;
     box-shadow: 0 .1rem .2rem black;
     border: 2px solid #ffdc00;
@@ -283,7 +287,8 @@ option {
     font-size: 1rem;
     text-align: left;
     margin-top: .5rem;
-    margin-left: 1.5rem;
+    margin-left: 1.1rem;
+    padding-bottom: .6rem;
     grid-row: 4 / 5;
     grid-column: 3 / 5; }
     @media (max-width: 37.5em) {
@@ -376,7 +381,7 @@ option {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   grid-auto-rows: minmax(500px, 1fr);
-  column-gap: 1.5rem;
+  column-gap: 1.7rem;
   row-gap: 2rem; }
   @media (max-width: 37.5em) {
     .peliculas-container {
@@ -428,7 +433,7 @@ option {
         display: inline-block; } }
     @media (max-width: 37.5em) {
       .pop__button {
-        left: 2rem; } }
+        left: 1.2rem; } }
   .pop__button:hover {
     cursor: pointer;
     box-shadow: 0 0.4rem 0.5rem rgba(242, 239, 53, 0.5);
@@ -443,7 +448,7 @@ option {
     left: 3.9rem; }
     @media (max-width: 37.5em) {
       .pop__icon {
-        left: 2.9rem; } }
+        left: 2.1rem; } }
   .pop__background {
     height: 3rem;
     width: 3rem;
